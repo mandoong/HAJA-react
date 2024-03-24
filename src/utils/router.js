@@ -1,14 +1,29 @@
-import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/home";
-import AboutPage from "../pages/about";
+import { Outlet, createBrowserRouter } from "react-router-dom";
+import About from "../pages/about/Index";
+import LayoutDefault from "../layouts/default";
+import AboutId from "../pages/about/[id]";
+import Home from "../pages/home/Index";
 
-export const useRouter = createBrowserRouter([
+export default createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <AboutPage />,
+    element: (
+      <LayoutDefault>
+        <Outlet />
+      </LayoutDefault>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/about/:id",
+        element: <AboutId />,
+      },
+    ],
   },
 ]);

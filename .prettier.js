@@ -9,7 +9,7 @@ module.exports = {
   //탭의 사용을 금하고 스페이스바 사용으로 대체
   tabWidth: 2,
   // 들여쓰기 너비는 2칸
-  trailingComma: "all",
+  trailingComma: "es5",
   //  객체나 배열 키:값 뒤에 항상 콤마
   printWidth: 80,
   // 코드 한줄이 maximum 80칸

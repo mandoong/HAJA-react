@@ -10,7 +10,7 @@
       "error",
       {
         "endOfLine": "auto",
-        "trailingComma": "all"
+        "trailingComma": "es5"
       }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

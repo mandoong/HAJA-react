@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "roboto";
+  src: url("../public/font/BebasNeue-Regular.ttf");
+}
+@font-face {
+  font-family: "over";
+  src: url("../public/font/Overpass-Regular.ttf");
+}
+@font-face {
+  font-family: "over-bold";
+  src: url("../public/font/Overpass-Bold.ttf");
+}
+
+body {
+  font-family: "over";
+}

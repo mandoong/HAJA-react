@@ -3,7 +3,7 @@ import BasicSvg from "../../components/basic/Svg";
 
 export default function Home() {
   return (
-    <>
+    <>1
       <div>home page</div>
       <BasicSvg src="/logo192.png" width="20px" height="30px" color="red" />
       <BasicButton width="20px" />

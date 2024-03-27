@@ -1,7 +1,3 @@
 export default function BasicButton({ width, height, color }) {
-  return (
-    <>
-      <button></button>
-    </>
-  );
+  return <div>1</div>;
 }

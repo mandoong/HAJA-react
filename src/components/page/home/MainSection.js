@@ -1,4 +1,5 @@
-import SearchBar from "../../components/page/home/SearchBar";
+import BasicUserProfile from "../../basic/user/UserProfile";
+import SearchBar from "./SearchBar";
 
 export default function HomeMainSection() {
   return (
@@ -31,6 +32,10 @@ export default function HomeMainSection() {
           <div className="text-[30px] font-over">By</div>
           <div className="text-[60px]">Outpost</div>
         </div>
+      </div>
+      <div className="w-full h-32 flex justify-center items-center gap-12">
+        <BasicUserProfile name="Outpost" tag="pro" />
+        <BasicUserProfile name=" Jasper Landberg" />
       </div>
     </div>
   );

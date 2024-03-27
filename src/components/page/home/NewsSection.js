@@ -8,8 +8,8 @@ export default function HomeNewsSection() {
     { name: "Energy Park - “Behind the scenes", desc: "News - March 6, 2024" },
   ];
   const data2 = [
-    { name: "Avex", desc: "Studio", tag: "fresh" },
-    { name: "Cuberto", desc: "Agency" },
+    { name: "Avex", desc: "Studio", tag: "INTERNATIONAL" },
+    { name: "Cuberto", desc: "Agency", tag: "INTERNATIONAL" },
     { name: "FAVE®", desc: "Agency - South Korea" },
     { name: "STUDIO-JT", desc: "Agency - South Korea" },
   ];

@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import BasicUserProfile from "../../basic/user/UserProfile";
 
 export default function HomeVoteSection() {
@@ -35,6 +36,11 @@ export default function HomeVoteSection() {
             </div>
           );
         })}
+      </div>
+      <div className="py-40 flex text-lg justify-center items-center gap-4">
+        <div>Check out all submitted websites</div>
+        <ArrowRightIcon className="w-5" />
+        <strong className="border-b-2 border-gray-400">View Nominees</strong>
       </div>
     </div>
   );

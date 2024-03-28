@@ -1,6 +1,7 @@
 import HomeMainSection from "../../components/page/home/MainSection";
 import HomeNewsSection from "../../components/page/home/NewsSection";
 import HomeVoteSection from "../../components/page/home/VoteSection";
+import HomeMarketSection from "../../components/page/home/MarketSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HomeMainSection />
       <HomeNewsSection />
       <HomeVoteSection />
+      <HomeMarketSection />
     </div>
   );
 }

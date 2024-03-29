@@ -16,11 +16,11 @@ export default function SearchBar() {
           <ChevronDownIcon width={12} />
         </div>
       </div>
-      <div className="flex text-xs">
+      <div className="flex text-xs font-over_b gap-2">
         <div>Log in</div>
         <div>Sign Up</div>
       </div>
-      <div className="flex gap-4 h-full text-xs">
+      <div className="hidden gap-4 h-full text-xs lg:flex">
         <div className="px-4 text-white rounded-md bg-[#222222] h-full text-center flex justify-center items-center">
           Be Pro
         </div>

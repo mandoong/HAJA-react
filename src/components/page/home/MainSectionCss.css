@@ -1,0 +1,11 @@
+@keyframes move {
+  0% {
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.move {
+  animation: move 10000ms linear infinite;
+}

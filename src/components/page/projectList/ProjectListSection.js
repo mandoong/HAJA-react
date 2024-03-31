@@ -74,7 +74,12 @@ export default function ProjectListSection() {
 
   return (
     <div className="w-full py-4 px-70">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+      <div
+        className="grid gap-8 justify-center "
+        style={{
+          gridTemplateColumns: `repeat(${numColumns}, minmax(0, 1fr))`,
+        }}
+      >
         {data.map((e, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index}>

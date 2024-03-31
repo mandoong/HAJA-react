@@ -1,8 +1,9 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import About from "../pages/about/index";
+import About from "../pages/about/Index";
 import LayoutDefault from "../layouts/default";
 import AboutId from "../pages/about/[id]";
-import Home from "../pages/projectList/index";
+import ProjectList from "../pages/projectList/index";
+import Home from "../pages/home/index";
 
 export default createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export default createBrowserRouter([
         path: "/about/:id",
         element: <AboutId />,
       },
+      { path: "/project/list", element: <ProjectList /> },
     ],
   },
 ]);

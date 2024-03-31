@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import BasicUserProfile from "../../basic/user/UserProfile";
-import SearchBar from "./SearchBar";
-import "./MainSectionCss.css";
+import SearchBar from "../../../pages/home/SearchBar";
+import "./MainSection.css";
 
 export default function HomeMainSection() {
   const imgSlider = useRef();

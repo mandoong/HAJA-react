@@ -1,4 +1,4 @@
-import ImgCardList from "./ImgCardList";
+import ImgCardList from "../../components/page/home/ImgCardList";
 
 export default function HomeMarketSection() {
   return (

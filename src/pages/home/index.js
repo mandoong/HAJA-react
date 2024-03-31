@@ -1,7 +1,7 @@
 import HomeMainSection from "../../components/page/home/MainSection";
-import HomeNewsSection from "../../components/page/home/NewsSection";
-import HomeVoteSection from "../../components/page/home/VoteSection";
-import HomeMarketSection from "../../components/page/home/MarketSection";
+import HomeNewsSection from "./NewsSection";
+import HomeVoteSection from "./VoteSection";
+import HomeMarketSection from "./MarketSection";
 import HomeFooter from "../../components/page/home/Footer";
 
 export default function Home() {

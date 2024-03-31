@@ -1,4 +1,4 @@
-import HomeListView from "./ListView";
+import HomeListView from "../../components/page/home/ListView";
 
 export default function HomeNewsSection() {
   const data1 = [

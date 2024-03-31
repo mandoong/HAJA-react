@@ -1,12 +1,17 @@
-import BasicButton from "../../components/basic/Button";
-import BasicSvg from "../../components/basic/Svg";
+import HomeMainSection from "../../components/page/home/MainSection";
+import HomeNewsSection from "../../components/page/home/NewsSection";
+import HomeVoteSection from "../../components/page/home/VoteSection";
+import HomeMarketSection from "../../components/page/home/MarketSection";
+import HomeFooter from "../../components/page/home/Footer";
 
 export default function Home() {
   return (
-    <>
-      <div>home page</div>
-      <BasicSvg src="/logo192.png" width="20px" height="30px" color="red" />
-      <BasicButton width="20px" />
-    </>
+    <div className="w-full flex justify-center items-center flex-col bg-[#f8f8f8]">
+      <HomeMainSection />
+      <HomeNewsSection />
+      <HomeVoteSection />
+      <HomeMarketSection />
+      <HomeFooter />
+    </div>
   );
 }

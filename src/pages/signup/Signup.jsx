@@ -12,7 +12,9 @@ export default function Signup() {
 
   return (
     <>
-      <button onClick={handleToggleSignup}>회원가입</button>
+      <button type="button" onClick={handleToggleSignup}>
+        회원가입
+      </button>
       {/* 회원가입 모달 */}
       <SignupModal isOpen={isSignupOpen} onClose={handleToggleSignup} />
     </>

@@ -27,4 +27,4 @@ HAJAPI.interceptors.response.use(
   }
 );
 
-export { HAJAPI };
+export default HAJAPI;

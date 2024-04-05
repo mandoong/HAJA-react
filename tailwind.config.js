@@ -8,6 +8,9 @@ module.exports = {
         over: ["over"],
         over_b: ["over-bold"],
       },
+      backgroundImage: {
+        main_section: "url('/img/mainCard.png')",
+      },
     },
   },
   plugins: [],

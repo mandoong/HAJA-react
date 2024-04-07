@@ -8,7 +8,7 @@ export default function HomeMainSection() {
         <div className="mb-2 font-[500]">프로젝트 어디서?</div>
         <div>헤메지 말고 그냥 &apos;하자&apos;!</div>
       </div>
-      <div className="absolute top-[350px] left-10 ">
+      <div className="absolute top-[30px] left-10 ">
         <div>내가 생각하는 아이디어를 실현하는 커뮤니티</div>
         <div>본업은 직장인, 부캐는 하자인이 되어보세요.</div>
       </div>

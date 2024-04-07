@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function LayoutHeader() {
   return (
     <>
-      <div className="flex h-16 px-4 items-center justify-between">
+      <div className="flex h-16 px-10 items-center justify-betweena">
         <div className="w-full flex items-center gap-10">
           로고
           <div className="w-96 text-[10px] md:hidden justify-around h-10 items-center flex">

@@ -1,10 +1,10 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import About from "../pages/about/Index";
+import About from "../pages/about/index";
 import LayoutDefault from "../layouts/default";
 import AboutId from "../pages/about/[id]";
 import ProjectList from "../pages/projectList/index";
+import Home from "../pages/home/index";
 import Signup from "../pages/signup/Signup";
-import Home from "../pages/home/Index";
 
 export default createBrowserRouter([
   {

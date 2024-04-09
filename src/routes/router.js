@@ -4,7 +4,7 @@ import LayoutDefault from "../layouts/default";
 import AboutId from "../pages/about/[id]";
 import ProjectList from "../pages/projectList/index";
 import Home from "../pages/home/index";
-import Signup from "../pages/signup/Signup";
+import Signup from "../pages/signup/index";
 
 export default createBrowserRouter([
   {

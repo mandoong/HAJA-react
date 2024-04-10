@@ -1,46 +1,55 @@
 import { useEffect, useState } from "react";
-import BasicUserProfile from "../../basic/user/UserProfile";
+import { Link } from "react-router-dom";
+import BasicCardImgCard from "../../basic/card/ImgCard";
 
 export default function ProjectListSection() {
   const data = [
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project1",
+      title: "Sample Project1",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project2",
+      title: "Sample Project2",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project3",
+      title: "Sample Project3",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project4",
+      title: "Sample Project4",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project5",
+      title: "Sample Project5",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project6",
+      title: "Sample Project6",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project7",
+      title: "Sample Project7",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
     {
       img: "https://cdn.pixabay.com/photo/2023/08/19/13/42/water-8200502_1280.jpg",
-      desc: "Sample Project8",
+      title: "Sample Project8",
+      desc: "프로젝트 설명",
       user: { name: "React", tag: "sample" },
     },
   ];
@@ -51,14 +60,12 @@ export default function ProjectListSection() {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
       if (windowWidth >= 1280) {
-        setNumColumns(5);
-      } else if (windowWidth >= 1024) {
         setNumColumns(4);
-      } else if (windowWidth >= 768) {
+      } else if (windowWidth >= 1024) {
         setNumColumns(3);
-      } else if (windowWidth >= 640) {
+      } else if (windowWidth >= 768) {
         setNumColumns(2);
-      } else {
+      } else if (windowWidth >= 640) {
         setNumColumns(1);
       }
     };
@@ -73,9 +80,9 @@ export default function ProjectListSection() {
   }, []);
 
   return (
-    <div className="w-full py-4 px-70">
+    <div className="w-full py-4 px-10">
       <div
-        className="grid gap-8 justify-center "
+        className="grid gap-5 justify-center "
         style={{
           gridTemplateColumns: `repeat(${numColumns}, minmax(0, 1fr))`,
         }}
@@ -83,18 +90,26 @@ export default function ProjectListSection() {
         {data.map((e, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index}>
-            <div className="bg-gray-300 aspect-[1.4/1] rounded-xl flex justify-center items-center mb-8">
-              <img
-                src={e.img}
-                alt={e.desc}
-                className="object-cover rounded-xl w-full h-full"
-              />
-            </div>
-            <div className="text-xl font-over_b mb-2">{e.desc}</div>
-            <div className="flex gap-3 w-full items-center">
-              <div className="text-xs text-[#afafaf]">by</div>
-              <BasicUserProfile name={e?.user?.name} tag={e?.user?.tag} />
-            </div>
+            <BasicCardImgCard
+              key={e.title}
+              img={e.img}
+              title={e.title}
+              desc={e.desc}
+              like
+            >
+              <div className="flex justify-between items-center">
+                <div className="text-xs text-[#afafaf] ml-auto">
+                  by {e.user.name}
+                </div>
+              </div>
+              <hr className="my-4" />
+              <Link
+                className="w-full py-2 rounded-fll flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
+                to="/"
+              >
+                프로젝트 자세히 보기
+              </Link>
+            </BasicCardImgCard>
           </div>
         ))}
       </div>

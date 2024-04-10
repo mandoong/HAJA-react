@@ -8,6 +8,11 @@ module.exports = {
         over: ["over"],
         over_b: ["over-bold"],
       },
+      spacing: {
+        72: "18rem",
+        84: "21rem",
+        96: "24rem",
+      },
       backgroundImage: {
         main_section: "url('/img/mainCard.png')",
       },

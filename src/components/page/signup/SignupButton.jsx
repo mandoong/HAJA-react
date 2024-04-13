@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function SignUpButton({ site }) {
-  let btnClass, btnStyle;
+  let btnClass;
+  let btnStyle;
 
   switch (site) {
     case "네이버":
@@ -16,6 +17,8 @@ export default function SignUpButton({ site }) {
       btnClass = "bg-white text-gray-700 border border-black";
       btnStyle = {};
       break;
+    default:
+      break;
   }
 
   return (
@@ -25,8 +28,8 @@ export default function SignUpButton({ site }) {
       style={btnStyle}
     >
       <img
-        className={`w-auto h-3/5 mr-3`}
-        src={require(`../../../assets/images/logos/${site}.png`)}
+        className="w-auto h-3/5 mr-3"
+        src={`../../../assets/images/logos/${site}.png`}
         alt={`${site} Logo`}
       />
       <p className="text-center">{site}로 회원가입</p>

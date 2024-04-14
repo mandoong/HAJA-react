@@ -17,6 +17,16 @@ export default function NewProject() {
       comment: "첫 번째 댓글입니다.",
       date: new Date().toLocaleDateString(),
     },
+    {
+      name: "React",
+      comment: "두 번째 댓글입니다.",
+      date: new Date().toLocaleDateString(),
+    },
+    {
+      name: "Node.js",
+      comment: "세 번째 댓글입니다.",
+      date: new Date().toLocaleDateString(),
+    },
   ];
   return (
     <div className="w-full flex justify-between pt-20 px-10">

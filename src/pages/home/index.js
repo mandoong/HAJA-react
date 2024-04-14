@@ -1,15 +1,11 @@
-import BasicSvg from "../../components/basic/svg";
+import HomeMainSection from "./MainSection";
+import HomeNewsSection from "./NewsSection";
 
 export default function Home() {
   return (
-    <>
-      <div>home page</div>
-      <BasicSvg
-        src="/logo192.png"
-        width={"20px"}
-        height={"30px"}
-        color={"red"}
-      />
-    </>
+    <div className="w-full flex justify-center items-center flex-col bg-[#f8f8f8]">
+      <HomeMainSection />
+      <HomeNewsSection />
+    </div>
   );
 }

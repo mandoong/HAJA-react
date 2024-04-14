@@ -1,0 +1,33 @@
+@keyframes move {
+  0% {
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(0px);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  90% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
+
+.move {
+  animation: move 10000ms linear infinite;
+}
+
+.slider {
+  animation: slide 10s linear infinite;
+}

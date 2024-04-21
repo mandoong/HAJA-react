@@ -4,6 +4,7 @@ import AboutId from "../pages/about/[id]";
 import ProjectList from "../pages/projectList/index";
 import Signup from "../pages/signup/index";
 import Home from "../pages/home/index";
+import ProjectDetail from "../pages/projectDetail";
 
 export default createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export default createBrowserRouter([
         element: <AboutId />,
       },
       { path: "/project/list", element: <ProjectList /> },
+      { path: "/project/detail", element: <ProjectDetail /> },
       {
         path: "/signup",
         element: <Signup />,

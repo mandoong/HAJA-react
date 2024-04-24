@@ -10,7 +10,7 @@ export default function LeaderCard({
   follow = false,
 }) {
   return (
-    <div className="w-full flex justify-center items-center flex-col border rounded-lg border-[#e5e5e5]">
+    <div className="w-[200px] flex justify-center items-center flex-col border rounded-lg border-[#e5e5e5]">
       <div className="gap-3">
         <div className="mt-3">리더정보</div>
         <div className="flex justify-between gap-2">

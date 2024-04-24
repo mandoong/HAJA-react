@@ -30,10 +30,10 @@ export default function NewProject() {
     },
   ];
   return (
-    <div className="w-full flex justify-between gap-20">
+    <div className="w-full flex justify-between gap-10">
       <div className="flex-1 overflow-hidden">
         <div>신규 프로젝트</div>
-        <div className="justify-between border rounded-lg p-4">
+        <div className="justify-between border rounded-lg p-8">
           <SimpleSlider />
           <div className="flex justify-between items-center">
             <div className="text-xs text-[#afafaf] ml-auto">

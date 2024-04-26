@@ -32,7 +32,7 @@ export default function LeaderCard({
           <div>
             <hr className="my-4" />
             <Link
-              className="w-full mb-3 px-6 py-2 rounded-md flex justify-center items-center text-sm text-[white] bg-[#594bba]"
+              className="w-full mb-5 px-6 py-2 rounded-md flex justify-center items-center text-sm text-[white] bg-[#594bba]"
               to="/"
             >
               구독하기

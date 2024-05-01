@@ -14,7 +14,15 @@
   font-family: "over-bold";
   src: url("../public/font/Overpass-Bold.ttf");
 }
+@font-face {
+  font-family: "namsan";
+  src: url("../public/font/SeoulNamsanM.ttf");
+}
+@font-face {
+  font-family: "hangang";
+  src: url("../public/font/SeoulHangangM.ttf");
+}
 
 body {
-  font-family: "over";
+  font-family: "hangang";
 }

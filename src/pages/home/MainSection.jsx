@@ -1,7 +1,7 @@
 export default function HomeMainSection() {
   return (
     <div
-      className="w-full max-w-[1200px] h-[500px] bg-fixed bg-center relative"
+      className="w-full h-[500px] bg-cover relative"
       style={{ backgroundImage: 'url("/img/mainCard.png")' }}
     >
       <div className="absolute top-52 left-10 text-[32px] font-bold">

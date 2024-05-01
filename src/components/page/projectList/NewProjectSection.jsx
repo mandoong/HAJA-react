@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import BasicCardImgCard from "../../basic/card/ImgCard";
 import CommentCard from "../../basic/card/CommentCard";
+import SimpleSlider from "../../basic/card/Slider";
 
 export default function NewProject() {
   const listitems = [
@@ -29,47 +30,38 @@ export default function NewProject() {
     },
   ];
   return (
-    <div className="w-full flex justify-between pt-20 px-10">
-      <div className="flex-1">
+    <div className="w-full flex justify-between gap-10">
+      <div className="flex-1 overflow-hidden">
         <div>신규 프로젝트</div>
-        <div>
-          {listitems.map((e) => {
-            return (
-              <BasicCardImgCard
-                key={e.title}
-                img={e.img}
-                title={e.title}
-                desc={e.desc}
-                like
-              >
-                <div className="flex justify-between items-center">
-                  <div className="text-xs text-[#afafaf] ml-auto">
-                    by {e.user.name}
-                  </div>
-                </div>
-                <hr className="my-4" />
-                <Link
-                  className="w-full py-2 rounded-fll flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
-                  to="/"
-                >
-                  프로젝트 자세히 보기
-                </Link>
-              </BasicCardImgCard>
-            );
-          })}
+        <div className="justify-between border rounded-lg p-8">
+          <SimpleSlider />
+          <div className="flex justify-between items-center">
+            <div className="text-xs text-[#afafaf] ml-auto">
+              by {listitems[0].user.name}
+            </div>
+          </div>
+          <hr className="my-4" />
+          <Link
+            className="w-full py-2 rounded-fll flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
+            to="/"
+          >
+            프로젝트 자세히 보기
+          </Link>
         </div>
       </div>
       <div className="flex-1">
         <div>최신 댓글</div>
-        {commitems.map((c) => {
-          return (
-            <CommentCard key={c.comment} name={c.name} comment={c.comment}>
-              <div className="flex justify-between items-center">
-                <div className="text-xs text-[#afafaf] ml-auto">{c.date}</div>
-              </div>
-            </CommentCard>
-          );
-        })}
+        <div className="border rounded-lg p-4">
+          {commitems.map((c) => {
+            return (
+              <CommentCard key={c.comment} name={c.name} comment={c.comment}>
+                <div className="flex justify-between items-center">
+                  <div className="text-xs text-[#afafaf] ml-auto">{c.date}</div>
+                </div>
+              </CommentCard>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

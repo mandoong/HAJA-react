@@ -36,7 +36,7 @@ export default function HomeNewsSection() {
     },
   ];
   return (
-    <div className="w-full pt-10 px-10 max-w-[1400px]">
+    <div className="w-full pt-10 max-w-[1400px]">
       <div className="w-full mb-10">
         <div className="w-full mb-6 text-lg font-bold text-[#526688]">
           새로운&apos; 프로덕트 부스

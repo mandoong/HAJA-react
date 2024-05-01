@@ -1,6 +1,6 @@
 export default function HomeBanner() {
   return (
-    <div className="w-full px-10 mt-10">
+    <div className="w-full mt-10">
       <div className="flex w-full h-24 bg-[#45d8e2] rounded-lg py-2 gap-10">
         <div className="w-48 flex justify-end items-center">
           <div className="w-20 aspect-square rounded-full border bg-[#47d9e3] flex flex-col justify-center items-center gap-2 rotate-45">

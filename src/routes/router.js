@@ -6,6 +6,7 @@ import Signup from "../pages/signup/index";
 import Home from "../pages/home/index";
 import ProjectDetail from "../pages/projectDetail/index";
 import ProjectApply from "../pages/projectApply/index";
+import Auth from "../components/page/auth/Auth";
 
 export default createBrowserRouter([
   {
@@ -30,6 +31,7 @@ export default createBrowserRouter([
         path: "/signup",
         element: <Signup />,
       }, // 네브바와 연결 후 삭제 예정
+      { path: "/auth", element: <Auth /> },
     ],
   },
 ]);

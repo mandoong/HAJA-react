@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 import SignupModal from "../../components/page/signup/SignupModal";
 
 export default function Signup() {
@@ -11,12 +13,11 @@ export default function Signup() {
   };
 
   return (
-    <>
-      <button type="button" onClick={handleToggleSignup}>
-        회원가입
-      </button>
+    <div>
+      <UserCircleIcon className="w-6 " onClick={handleToggleSignup} />
+
       {/* 회원가입 모달 */}
       <SignupModal isOpen={isSignupOpen} onClose={handleToggleSignup} />
-    </>
+    </div>
   );
 }

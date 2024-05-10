@@ -34,9 +34,12 @@ function SignupButton({ site }) {
     <a
       href={siteLink}
       className={`w-full text-white font-bold py-2 px-4 rounded ${buttonColorClass}`}
-      onClick={() => openNewWindow(siteLink)}
+      onClick={(event) => {
+        event.preventDefault(); // 기본 동작 중단
+        openNewWindow(siteLink);
+      }}
     >
-      <i className={`${buttonIcon}`} /> {site}으로 회원가입
+      <i className={`${buttonIcon}`} /> {site}로 회원가입
     </a>
   );
 }

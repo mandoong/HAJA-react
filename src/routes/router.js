@@ -30,7 +30,7 @@ export default createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
-      }, // 네브바와 연결 후 삭제 예정
+      },
       { path: "/auth", element: <Auth /> },
     ],
   },

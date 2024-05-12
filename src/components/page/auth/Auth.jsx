@@ -1,18 +1,32 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+/* eslint-disable no-restricted-globals */
+import { useEffect, useState } from "react";
 
 export default function Auth() {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const oauthId = searchParams.get("oauthId");
-  const loginType = searchParams.get("loginType");
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const oauthId = localStorage.getItem("oauthId");
+      const loginType = localStorage.getItem("loginType");
+      if (
+        oauthId !== null &&
+        oauthId !== "" &&
+        loginType !== null &&
+        loginType !== ""
+      ) {
+        setLoggedIn(true);
+        clearInterval(intervalId); // 토큰을 찾으면 setInterval 중지
+      }
+    }, 500); // 0.5초마다 실행
+
+    return () => clearInterval(intervalId); // 컴포넌트가 unmount될 때 clearInterval
+  }, []);
 
   useEffect(() => {
-    if (oauthId && loginType) {
-      localStorage.setItem("oauthId", oauthId);
-      localStorage.setItem("loginType", loginType);
+    if (loggedIn) {
+      window.open("/login/success", "_self");
+      window.close();
     }
-  }, [oauthId, loginType]);
+  }, [loggedIn]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

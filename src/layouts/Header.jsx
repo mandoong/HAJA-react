@@ -3,11 +3,34 @@ import {
   MagnifyingGlassIcon,
   PencilIcon,
   UserCircleIcon,
+  ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
 
 export default function LayoutHeader() {
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      if (HAJAPI.defaults.headers.common.Authorization) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    };
+
+    checkLogin();
+  }, []);
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("oauthId"); // 토큰 삭제
+    window.localStorage.removeItem("loginType"); // 토큰 삭제
+    navigate("/"); // 로그아웃 시 메인 페이지
+  };
   return (
     <>
       <div className="flex h-16 px-10 items-center justify-betweena">
@@ -39,9 +62,20 @@ export default function LayoutHeader() {
           <div>
             <PencilIcon className="w-6" />
           </div>
-          <button type="button">
-            <Signup />
-          </button>
+          {isLogin ? (
+            <div className="flex gap-6">
+              <Link to="https://api.project-haja.com/user/me">
+                <UserCircleIcon className="w-6" />
+              </Link>
+              <button type="button" onClick={handleLogout}>
+                <ArrowRightStartOnRectangleIcon className="w-6" />
+              </button>
+            </div>
+          ) : (
+            <button type="button">
+              <Signup />
+            </button>
+          )}
         </div>
       </div>
       <div className="w-full text-sm md:flex justify-around h-10 items-center hidden">

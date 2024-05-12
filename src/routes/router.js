@@ -1,4 +1,5 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
+import HAJAPI from "../utils/api";
 import LayoutDefault from "../layouts/default";
 import AboutId from "../pages/about/[id]";
 import ProjectList from "../pages/projectList/index";
@@ -7,6 +8,8 @@ import Home from "../pages/home/index";
 import ProjectDetail from "../pages/projectDetail/index";
 import ProjectApply from "../pages/projectApply/index";
 import Auth from "../components/page/auth/Auth";
+import LoginPage from "../components/page/signup/LoginPage";
+import UserMypage from "../components/page/user/UserMypage";
 
 export default createBrowserRouter([
   {
@@ -27,11 +30,13 @@ export default createBrowserRouter([
       { path: "/project/list", element: <ProjectList /> },
       { path: "/project/detail", element: <ProjectDetail /> },
       { path: "/project/Apply", element: <ProjectApply /> },
+      { path: "/user/me", element: <UserMypage /> },
       {
         path: "/signup",
         element: <Signup />,
       },
-      { path: "/auth", element: <Auth /> },
     ],
   },
+  { path: "/auth", element: <Auth /> },
+  { path: "/login/success", element: <LoginPage /> },
 ]);

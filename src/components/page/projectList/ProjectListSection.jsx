@@ -105,7 +105,7 @@ export default function ProjectListSection() {
               <hr className="my-4" />
               <Link
                 className="w-full py-2 rounded-fll flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
-                to="/"
+                to="/project/detail"
               >
                 프로젝트 자세히 보기
               </Link>

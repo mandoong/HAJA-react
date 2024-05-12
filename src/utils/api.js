@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const HAJAPI = axios.create({
-  baseURL: "http://localhost:3000/", // API의 기본 URL을 설정합니다.
-  // baseURL: "https://api.project-haja.com", // API의 기본 URL을 설정합니다.
+  // baseURL: "http://localhost:3000/", // API의 기본 URL을 설정합니다.
+  baseURL: "https://api.project-haja.com", // API의 기본 URL을 설정합니다.
 });
 const Token = window.localStorage.getItem("oauthId") || null;
 if (Token) {

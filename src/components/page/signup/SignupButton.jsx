@@ -1,17 +1,7 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-shadow */
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
 function SignupButton({ site }) {
   let buttonColorClass = "";
   let buttonIcon = "";
   let siteLink = "";
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const oauthId = searchParams.get("oauthId");
-  const loginType = searchParams.get("loginType");
-  const [popup, setPopup] = useState(null);
 
   const openLoginPopup = (url) => {
     const width = 500;
@@ -19,8 +9,7 @@ function SignupButton({ site }) {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
     const windowFeatures = `width=${width},height=${height},left=${left},top=${top}`;
-    const Popup = window.open(url, "_blank", windowFeatures);
-    setPopup(Popup);
+    window.open(url, "_blank", windowFeatures);
   };
 
   switch (site) {
@@ -47,21 +36,14 @@ function SignupButton({ site }) {
     openLoginPopup(siteLink);
   };
 
-  useEffect(() => {
-    if (oauthId && loginType && popup) {
-      localStorage.setItem("oauthId", oauthId);
-      localStorage.setItem("loginType", loginType);
-    }
-  }, [oauthId, loginType]);
-
   return (
-    <a
-      href={siteLink}
+    <button
+      type="button"
       className={`w-full text-white font-bold py-2 px-4 rounded ${buttonColorClass}`}
       onClick={handleButtonClick}
     >
       <i className={`${buttonIcon}`} /> {site}로 회원가입
-    </a>
+    </button>
   );
 }
 

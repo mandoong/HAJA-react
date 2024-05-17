@@ -29,6 +29,7 @@ export default function LayoutHeader() {
   const handleLogout = () => {
     window.localStorage.removeItem("oauthId"); // 토큰 삭제
     window.localStorage.removeItem("loginType"); // 토큰 삭제
+    setIsLogin(false);
     navigate("/"); // 로그아웃 시 메인 페이지
   };
   return (
@@ -64,7 +65,7 @@ export default function LayoutHeader() {
           </div>
           {isLogin ? (
             <div className="flex gap-6">
-              <Link to="https://api.project-haja.com/user/me">
+              <Link to="/user/me">
                 <UserCircleIcon className="w-6" />
               </Link>
               <button type="button" onClick={handleLogout}>

@@ -4,7 +4,7 @@ import LoungeTagTap from "./TagTap";
 
 export default function Lounge() {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <LoungeTagTap />
       <LoungeList />
       <LoungeRankTap />

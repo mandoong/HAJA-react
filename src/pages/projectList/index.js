@@ -8,12 +8,14 @@ import HotProject from "../../components/page/projectList/HotProjectSection";
 export default function ProjectList() {
   return (
     <div className="w-full flex justify-center items-center flex-col bg-[#f8f8f8]">
-      <ProjectMainSection />
-      <NewProject />
-      <HotProject />
-      <ProjectListSection />
-      <PageListSection />
-      <HomeFooter />
+      <div className="flex flex-col items-center max-w-[1200px] px-10 box-border">
+        <ProjectMainSection />
+        <NewProject />
+        <HotProject />
+        <ProjectListSection />
+        <PageListSection />
+        <HomeFooter />
+      </div>
     </div>
   );
 }

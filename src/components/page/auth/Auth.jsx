@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Auth } from "../../../utils/repository";
 
@@ -16,15 +16,14 @@ export default function AuthPage() {
       password: "password",
     });
     window.opener.localStorage.setItem("oauthId", result.data.accessToken);
-    console.log(result.data.accessToken);
+    console.log(result);
   };
   useEffect(() => {
     if (oauthId && loginType) {
       fetch();
       // window.opener.localStorage.setItem("oauthId", oauthId);
       // window.opener.localStorage.setItem("loginType", loginType);
-      // window.open("/login/success", "_self");
-      // window.close();
+      window.close();
     }
   }, [oauthId, loginType]);
 

@@ -7,9 +7,8 @@ import Signup from "../pages/signup/index";
 import Home from "../pages/home/index";
 import ProjectDetail from "../pages/projectDetail/index";
 import ProjectApply from "../pages/projectApply/index";
-import Auth from "../components/page/auth/Auth";
-import LoginPage from "../components/page/signup/LoginPage";
-import UserMypage from "../components/page/user/UserMypage";
+import UserMypage from "../pages/user/index";
+import AuthPage from "../components/page/auth/Auth";
 
 export default createBrowserRouter([
   {
@@ -37,6 +36,5 @@ export default createBrowserRouter([
       },
     ],
   },
-  { path: "/auth", element: <Auth /> },
-  { path: "/login/success", element: <LoginPage /> },
+  { path: "/auth", element: <AuthPage /> },
 ]);

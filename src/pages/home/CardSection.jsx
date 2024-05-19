@@ -19,17 +19,17 @@ export default function HomeCardSection() {
       img: "",
     },
     {
-      title: "라이너블",
+      title: "라이너블1",
       desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
       img: "",
     },
     {
-      title: "차곡차곡",
+      title: "차곡차곡1",
       desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
       img: "",
     },
     {
-      title: "단백집",
+      title: "단백집1",
       desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
       img: "",
     },
@@ -42,7 +42,7 @@ export default function HomeCardSection() {
       <div className="grid grid-cols-4 gap-4">
         {listitems.map((e) => {
           return (
-            <BasicTopImgCard key={e}>
+            <BasicTopImgCard key={e.title}>
               <div className="text-sm p-3">
                 <div className="text-[#c9c9c9] mb-2">소셜네트워크</div>
                 <div className="mb-4">[서울] 10대 커뮤니티 앱</div>

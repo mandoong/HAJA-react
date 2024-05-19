@@ -36,7 +36,7 @@ export default function LayoutHeader() {
     <div className="shadow-md z-10">
       <div className="flex h-16 px-10 items-center justify-betweena">
         <div className="w-full flex items-center gap-10">
-          로고
+          <Link to="/">로고</Link>
           <div className="w-96 text-[10px] md:hidden justify-around h-10 items-center flex">
             <Link className="hover:text-orange-400" to="/project/list">
               모임

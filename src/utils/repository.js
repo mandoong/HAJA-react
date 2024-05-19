@@ -39,8 +39,8 @@ export const User = {
       .then((res) => res)
       .catch((err) => err);
   },
-  CheckNickname: async () => {
-    return HAJAPI.get("/user/check-nickname")
+  CheckNickname: async (data) => {
+    return HAJAPI.post("/user/check-nickname", data)
       .then((res) => res)
       .catch((err) => err);
   },

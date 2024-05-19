@@ -23,7 +23,7 @@ export default function AuthPage() {
       fetch();
       // window.opener.localStorage.setItem("oauthId", oauthId);
       // window.opener.localStorage.setItem("loginType", loginType);
-      window.close();
+      // window.close();
     }
   }, [oauthId, loginType]);
 

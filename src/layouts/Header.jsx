@@ -9,10 +9,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
+import { useUserStore } from "../store/store";
 
 export default function LayoutHeader() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  const { token, setToken } = useUserStore();
+
+  const getToken = () => {
+    const storgeToken = window.localStorage.getItem("oauthId");
+    if (storgeToken) setToken(storgeToken);
+  };
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -24,6 +32,12 @@ export default function LayoutHeader() {
     };
 
     checkLogin();
+
+    window.addEventListener("token", getToken);
+
+    return () => {
+      window.removeEventListener("token", getToken);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -63,7 +77,7 @@ export default function LayoutHeader() {
           <div>
             <PencilIcon className="w-6" />
           </div>
-          {isLogin ? (
+          {token ? (
             <div className="flex gap-6">
               <Link to="/user/me">
                 <UserCircleIcon className="w-6" />

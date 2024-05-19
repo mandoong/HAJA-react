@@ -18,11 +18,13 @@ export default function Mypage() {
   const [ability, setAbility] = useState("");
   const [level, setLevel] = useState("");
   const [status, setStatus] = useState("");
+  const [nickname, setNickname] = useState();
 
   const fetch = async () => {
     try {
       const result = await User.GetMe();
       setUser(result.data);
+      setNickname(result.data.nickname);
       console.log(result.data.age);
     } catch (error) {
       console.error("Failed to fetch user data", error);
@@ -35,14 +37,14 @@ export default function Mypage() {
 
   const handleNickname = async (e) => {
     // user 객체의 nickname을 보내고 있는건가?
-    const nickname = e.target.value;
-    const isAvailable = await User.CheckNickname();
-    if (isAvailable) {
+    setNickname(e.target.value);
+    const isAvailable = await User.CheckNickname({ nickname: e.target.value });
+    if (isAvailable.data === true) {
       setNicknameMessage("사용 가능한 닉네임입니다.");
     } else {
       setNicknameMessage("이미 사용 중인 닉네임입니다.");
     }
-    console.log(isAvailable);
+    console.log(isAvailable.data);
   };
 
   const handleSave = async () => {
@@ -98,6 +100,7 @@ export default function Mypage() {
           <input
             type="text"
             defaultValue={user ? user.nickname : ""}
+            value={nickname}
             onChange={handleNickname}
             className="w-full p-2 border rounded-md bg-gray-50"
           />

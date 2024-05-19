@@ -33,7 +33,7 @@ export default function LayoutHeader() {
     navigate("/"); // 로그아웃 시 메인 페이지
   };
   return (
-    <>
+    <div className="shadow-md z-10">
       <div className="flex h-16 px-10 items-center justify-betweena">
         <div className="w-full flex items-center gap-10">
           로고
@@ -47,10 +47,10 @@ export default function LayoutHeader() {
             <Link className="hover:text-orange-400" to="/">
               하자인
             </Link>
-            <Link className="hover:text-orange-400" to="/">
+            {/* <Link className="hover:text-orange-400" to="/">
               퀘스트
-            </Link>
-            <Link className="hover:text-orange-400" to="/">
+            </Link> */}
+            <Link className="hover:text-orange-400" to="/lounge">
               라운지
             </Link>
           </div>
@@ -89,13 +89,13 @@ export default function LayoutHeader() {
         <Link className="hover:text-orange-400" to="/">
           하자인
         </Link>
-        <Link className="hover:text-orange-400" to="/">
+        {/* <Link className="hover:text-orange-400" to="/">
           퀘스트
-        </Link>
-        <Link className="hover:text-orange-400" to="/">
+        </Link> */}
+        <Link className="hover:text-orange-400" to="/lounge">
           라운지
         </Link>
       </div>
-    </>
+    </div>
   );
 }

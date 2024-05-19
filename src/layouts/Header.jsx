@@ -15,7 +15,7 @@ export default function LayoutHeader() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
-  const { token, setToken } = useUserStore();
+  const { token, setToken, removeToken } = useUserStore();
 
   const getToken = () => {
     const storgeToken = window.localStorage.getItem("oauthId");
@@ -44,6 +44,7 @@ export default function LayoutHeader() {
     window.localStorage.removeItem("oauthId"); // 토큰 삭제
     window.localStorage.removeItem("loginType"); // 토큰 삭제
     setIsLogin(false);
+    removeToken();
     navigate("/"); // 로그아웃 시 메인 페이지
   };
   return (

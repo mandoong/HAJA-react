@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Auth } from "../../../utils/repository";
+import { Auth, User } from "../../../utils/repository";
 import { useUserStore } from "../../../store/store";
 
 export default function AuthPage() {
@@ -18,9 +18,17 @@ export default function AuthPage() {
       email: "example@google.com",
       password: "password",
     });
-    window.opener.localStorage.setItem("oauthId", result.data.accessToken);
-    window.opener.dispatchEvent(new Event("token"));
-    window.close();
+
+    const oauthCheck = await User.CheckOauth();
+    const { requireInfo } = oauthCheck.data;
+
+    if (requireInfo) {
+      window.opener.location.href = "/user";
+    } else {
+      window.opener.localStorage.setItem("oauthId", result.data.accessToken);
+      window.opener.dispatchEvent(new Event("token"));
+      // window.close();
+    }
   };
   useEffect(() => {
     if (oauthId && loginType) {

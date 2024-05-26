@@ -10,6 +10,7 @@ import ProjectApply from "../pages/projectApply/index";
 import Lounge from "../pages/lounge";
 import AuthPage from "../components/page/auth/Auth";
 import UserMypage from "../pages/user";
+import SignupInfo from "../pages/signup/SignupInfo";
 
 export default createBrowserRouter([
   {
@@ -27,15 +28,16 @@ export default createBrowserRouter([
         path: "/about/:id",
         element: <AboutId />,
       },
-      { path: "/project/list", element: <ProjectList /> },
+      { path: "/project", element: <ProjectList /> },
       { path: "/project/detail", element: <ProjectDetail /> },
       { path: "/project/Apply", element: <ProjectApply /> },
       { path: "/user/me", element: <UserMypage /> },
       {
         path: "/signup",
         element: <Signup />,
-      }, // 네브바와 연결 후 삭제 예정
+      },
       { path: "/lounge", element: <Lounge /> },
+      { path: "/user", element: <SignupInfo /> },
     ],
   },
   { path: "/auth", element: <AuthPage /> },

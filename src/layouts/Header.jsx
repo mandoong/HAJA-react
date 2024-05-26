@@ -53,10 +53,10 @@ export default function LayoutHeader() {
         <div className="w-full flex items-center gap-10">
           <Link to="/">로고</Link>
           <div className="w-96 text-[10px] md:hidden justify-around h-10 items-center flex">
-            <Link className="hover:text-orange-400" to="/project/list">
+            <Link className="hover:text-orange-400" to="/project">
               모임
             </Link>
-            <Link className="hover:text-orange-400" to="/project/list">
+            <Link className="hover:text-orange-400" to="/project">
               프로덕트
             </Link>
             <Link className="hover:text-orange-400" to="/">
@@ -95,10 +95,10 @@ export default function LayoutHeader() {
         </div>
       </div>
       <div className="w-full text-sm md:flex justify-around h-10 items-center hidden">
-        <Link className="hover:text-orange-400" to="/project/list">
+        <Link className="hover:text-orange-400" to="/project">
           모임
         </Link>
-        <Link className="hover:text-orange-400" to="/project/list">
+        <Link className="hover:text-orange-400" to="/project">
           프로덕트
         </Link>
         <Link className="hover:text-orange-400" to="/">

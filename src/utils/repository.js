@@ -1,5 +1,13 @@
 import HAJAPI from "./api";
 
+export const Default = {
+  Project: async (page = 1, perPage = 10) => {
+    return HAJAPI.get(`/project?page=${page}&perPage=${perPage}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
+};
+
 export const Auth = {
   Login: async (data) => {
     return HAJAPI.post("/auth/login", data)
@@ -18,6 +26,16 @@ export const Auth = {
   },
   NaverCallback: async () => {
     return HAJAPI.get("/auth/naver/callback")
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  Kakao: async () => {
+    return HAJAPI.get("/auth/kakao")
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  KakaoCallback: async () => {
+    return HAJAPI.get("/auth/kakao/callback")
       .then((res) => res)
       .catch((err) => err);
   },

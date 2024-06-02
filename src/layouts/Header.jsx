@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
 import { useUserStore } from "../store/store";
+import Login from "../pages/login";
 
 export default function LayoutHeader() {
   const [isLogin, setIsLogin] = useState(false);
@@ -88,9 +89,14 @@ export default function LayoutHeader() {
               </button>
             </div>
           ) : (
-            <button type="button">
-              <Signup />
-            </button>
+            <div className="flex">
+              <button type="button">
+                <Signup />
+              </button>
+              <button type="button">
+                <Login />
+              </button>
+            </div>
           )}
         </div>
       </div>

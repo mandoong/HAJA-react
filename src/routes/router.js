@@ -29,7 +29,7 @@ export default createBrowserRouter([
         element: <AboutId />,
       },
       { path: "/project", element: <ProjectList /> },
-      { path: "/project/detail", element: <ProjectDetail /> },
+      { path: "/project/:id", element: <ProjectDetail /> },
       { path: "/project/Apply", element: <ProjectApply /> },
       { path: "/user/me", element: <UserMypage /> },
       {

@@ -25,7 +25,6 @@ export default function SignupModal({ isOpen, onClose }) {
               <SignupButton site="네이버" />
               <SignupButton site="카카오" />
               <SignupButton site="구글" />
-              <p className="text-gray-500 text-sm underline mt-10">로그인</p>
             </div>
           </button>
         </button>

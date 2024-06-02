@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import BasicCardImgCard from "../../basic/card/ImgCard";
-import { Default } from "../../../utils/repository";
+import { Project } from "../../../utils/repository";
 
 export default function ProjectListSection() {
   const [data, setData] = useState([]);
   const [numColumns, setNumColumns] = useState(4); // 한 줄에 표시할 개수
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetch = async () => {
+  const fetch = async (page = 1) => {
     try {
-      const result = await Default.Project(1, 10);
+      const result = await Project.ProjectList(page, 12);
       setData(result.data.nodes);
-      console.log(result.data);
+      setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
+      console.log(Math.ceil(result.data.count / 12));
     } catch (error) {
       console.log("Fail", error);
     }
   };
 
   useEffect(() => {
-    fetch();
-  }, []);
+    fetch(currentPage);
+  }, [currentPage]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,6 +47,28 @@ export default function ProjectListSection() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const getVisiblePageNumbers = () => {
+    const pages = [];
+    const totalVisible = 10;
+    const halfVisible = Math.floor(totalVisible / 2);
+    let startPage = Math.max(currentPage - halfVisible, 1);
+    const endPage = Math.min(startPage + totalVisible - 1, totalPages);
+
+    if (endPage - startPage < totalVisible - 1) {
+      startPage = Math.max(endPage - totalVisible + 1, 1);
+    }
+
+    for (let i = startPage; i <= endPage; i += 1) {
+      pages.push(i);
+    }
+
+    return pages;
+  };
 
   return (
     <div className="w-full py-4 px-10">
@@ -70,7 +96,7 @@ export default function ProjectListSection() {
                 <hr className="my-4" />
                 <Link
                   className="w-full py-2 rounded-full flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
-                  to="/project/detail"
+                  to={`/project/${e.id}`}
                 >
                   프로젝트 자세히 보기
                 </Link>
@@ -80,6 +106,40 @@ export default function ProjectListSection() {
         ) : (
           <div>Loading...</div>
         )}
+      </div>
+      <div className="w-full py-4 px-10">
+        <div className="py-20 flex text-lg justify-center items-center gap-4">
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeftIcon className="w-5" />
+            <strong className="border-b-2 border-gray-400">Previous</strong>
+          </button>
+          <div>
+            {getVisiblePageNumbers().map((page) => (
+              <button
+                type="button"
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`px-2 ${currentPage === page ? "font-bold" : ""}`}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="flex items-center gap-2"
+          >
+            <strong className="border-b-2 border-gray-400">Next</strong>
+            <ArrowRightIcon className="w-5" />
+          </button>
+        </div>
       </div>
     </div>
   );

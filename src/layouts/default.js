@@ -5,7 +5,9 @@ export default function LayoutDefault({ children }) {
   return (
     <div className="w-30 bg-bottom">
       <LayoutHeader />
-      {children}
+      <div className="w-full flex justify-center">
+        <div className="max-w-[1400px] w-full">{children}</div>
+      </div>
       <LayoutFooter />
     </div>
   );

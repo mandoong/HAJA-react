@@ -5,7 +5,7 @@ export default function SignupModal({ isOpen, onClose }) {
   return (
     isOpen && (
       // 배경
-      <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+      <div className="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center bg-black bg-opacity-50">
         {/* 모달 */}
         <button
           type="button"
@@ -25,7 +25,6 @@ export default function SignupModal({ isOpen, onClose }) {
               <SignupButton site="네이버" />
               <SignupButton site="카카오" />
               <SignupButton site="구글" />
-              <p className="text-gray-500 text-sm underline mt-10">로그인</p>
             </div>
           </button>
         </button>

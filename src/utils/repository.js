@@ -55,3 +55,11 @@ export const User = {
       .catch((err) => err);
   },
 };
+
+export const Post = {
+  fetchPosts: async () => {
+    return HAJAPI.get("/post")
+      .then((res) => res.data.nodes)
+      .catch((err) => err);
+  },
+};

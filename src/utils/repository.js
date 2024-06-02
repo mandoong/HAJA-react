@@ -85,4 +85,9 @@ export const Post = {
       .then((res) => res.data.nodes)
       .catch((err) => err);
   },
+  addPost: async (data) => {
+    return HAJAPI.post("/post", data)
+      .then((res) => res)
+      .catch((err) => err);
+  },
 };

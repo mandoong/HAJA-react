@@ -1,3 +1,5 @@
+import SaveModal from "../user/SaveModal";
+
 function SignupButton({ site }) {
   let buttonColorClass = "";
   let buttonIcon = "";
@@ -21,6 +23,7 @@ function SignupButton({ site }) {
     case "카카오":
       buttonColorClass = "bg-yellow-500 hover:bg-yellow-600";
       buttonIcon = "fab fa-kakao mr-2";
+      siteLink = "https://api.project-haja.com/auth/kakao";
       break;
     case "구글":
       buttonColorClass = "bg-blue-500 hover:bg-blue-600";

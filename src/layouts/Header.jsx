@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
 import { useUserStore } from "../store/store";
+import Login from "../pages/login";
 
 export default function LayoutHeader() {
   const [isLogin, setIsLogin] = useState(false);
@@ -53,10 +54,10 @@ export default function LayoutHeader() {
         <div className="w-full flex items-center gap-10">
           <Link to="/">로고</Link>
           <div className="w-96 text-[10px] md:hidden justify-around h-10 items-center flex">
-            <Link className="hover:text-orange-400" to="/project/list">
+            <Link className="hover:text-orange-400" to="/project">
               모임
             </Link>
-            <Link className="hover:text-orange-400" to="/project/list">
+            <Link className="hover:text-orange-400" to="/project">
               프로덕트
             </Link>
             <Link className="hover:text-orange-400" to="/">
@@ -88,17 +89,22 @@ export default function LayoutHeader() {
               </button>
             </div>
           ) : (
-            <button type="button">
-              <Signup />
-            </button>
+            <div className="flex">
+              <button type="button">
+                <Signup />
+              </button>
+              <button type="button">
+                <Login />
+              </button>
+            </div>
           )}
         </div>
       </div>
       <div className="w-full text-sm md:flex justify-around h-10 items-center hidden">
-        <Link className="hover:text-orange-400" to="/project/list">
+        <Link className="hover:text-orange-400" to="/project">
           모임
         </Link>
-        <Link className="hover:text-orange-400" to="/project/list">
+        <Link className="hover:text-orange-400" to="/project">
           프로덕트
         </Link>
         <Link className="hover:text-orange-400" to="/">

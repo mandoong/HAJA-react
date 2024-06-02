@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import SignupModal from "../../components/page/signup/SignupModal";
+import LoginModal from "./LoginModal";
 
-export default function Signup() {
+export default function Login() {
   // 모달 상태
   const [isSignupOpen, setIsSignupOpen] = useState(false);
 
@@ -16,14 +16,14 @@ export default function Signup() {
     <div>
       <button
         type="button"
-        className="w-8 text-xs"
+        className="w-12 text-xs"
         onClick={handleToggleSignup}
       >
-        가입
+        / 로그인
       </button>
 
       {/* 회원가입 모달 */}
-      <SignupModal isOpen={isSignupOpen} onClose={handleToggleSignup} />
+      <LoginModal isOpen={isSignupOpen} onClose={handleToggleSignup} />
     </div>
   );
 }

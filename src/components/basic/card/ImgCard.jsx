@@ -15,8 +15,12 @@ export default function BasicCardImgCard({
         </div>
       )}
       <div className="flex items-center gap-3 h-16">
-        <div className="h-full aspect-square rounded-md bg-slate-400">
-          <img src={img} alt="" />
+        <div className="h-full aspect-square rounded-md flex items-center bg-slate-400">
+          <img
+            src={img}
+            alt=""
+            className="w-full h-full object-cover rounded-md"
+          />
         </div>
         <div className="flex-1">
           <div className="text-sm mb-2">{title}</div>

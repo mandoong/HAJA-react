@@ -13,7 +13,6 @@ export default function ProjectList() {
         <NewProject />
         <HotProject />
         <ProjectListSection />
-        <PageListSection />
         <HomeFooter />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CameraIcon, UserIcon } from "@heroicons/react/20/solid";
 import { User } from "../../utils/repository";
 import SaveModal from "../../components/page/user/SaveModal";
@@ -21,24 +21,18 @@ export default function Mypage() {
   const [nickname, setNickname] = useState();
 
   const fetch = async () => {
-    try {
-      const result = await User.GetMe();
-      setUser(result.data);
-      setNickname(result.data.nickname);
-      console.log(result.data.age);
-    } catch (error) {
-      console.error("Failed to fetch user data", error);
-    }
+    const result = await User.GetMe();
+    setUser(result.data);
+    setNickname(result.data.nickname);
+    console.log(result.data.age);
   };
 
   useEffect(() => {
     fetch();
   }, []);
 
-  const handleNickname = async (e) => {
-    // user 객체의 nickname을 보내고 있는건가?
-    setNickname(e.target.value);
-    const isAvailable = await User.CheckNickname({ nickname: e.target.value });
+  const handleNicknameCheck = async () => {
+    const isAvailable = await User.CheckNickname({ nickname });
     if (isAvailable.data === true) {
       setNicknameMessage("사용 가능한 닉네임입니다.");
     } else {
@@ -47,21 +41,32 @@ export default function Mypage() {
     console.log(isAvailable.data);
   };
 
+  const debounce = (callback, delay = 200) => {
+    let timer;
+    return (event) => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(callback, delay, event);
+    };
+  };
+
+  const nicknameDebounce = useCallback(debounce(handleNicknameCheck, 200), [
+    nickname,
+  ]);
+
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+    nicknameDebounce();
+  };
+
   const handleSave = async () => {
-    try {
-      const userUpdate = { ...user };
-      const result = await User.EditMe(userUpdate);
-      if (result.status === 200) {
-        setUser(result.data);
-        setModalMessage("프로필이 성공적으로 업데이트되었습니다.");
-        setShowModal(true);
-      } else {
-        setModalMessage("프로필 업데이트에 실패했습니다.");
-        setShowModal(true);
-      }
-    } catch (error) {
-      console.error("Failed to update user data", error);
-      setModalMessage("프로필 업데이트 중 오류가 발생했습니다.");
+    const userUpdate = { ...user };
+    const result = await User.EditMe(userUpdate);
+    if (result.status === 200) {
+      setUser(result.data);
+      setModalMessage("프로필이 성공적으로 업데이트되었습니다.");
+      setShowModal(true);
+    } else {
+      setModalMessage("프로필 업데이트에 실패했습니다.");
       setShowModal(true);
     }
   };
@@ -101,7 +106,7 @@ export default function Mypage() {
             type="text"
             defaultValue={user ? user.nickname : ""}
             value={nickname}
-            onChange={handleNickname}
+            onChange={handleNicknameChange}
             className="w-full p-2 border rounded-md bg-gray-50"
           />
           <span className="text-red-500 text-sm">{nicknameMessage}</span>

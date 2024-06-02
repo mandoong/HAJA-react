@@ -1,5 +1,18 @@
 import HAJAPI from "./api";
 
+export const Project = {
+  ProjectList: async (page = 1, perPage = 10) => {
+    return HAJAPI.get(`/project?page=${page}&perPage=${perPage}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  ProjectDetail: async (id) => {
+    return HAJAPI.get(`/project/${id}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
+};
+
 export const Auth = {
   Login: async (data) => {
     return HAJAPI.post("/auth/login", data)
@@ -18,6 +31,16 @@ export const Auth = {
   },
   NaverCallback: async () => {
     return HAJAPI.get("/auth/naver/callback")
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  Kakao: async () => {
+    return HAJAPI.get("/auth/kakao")
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  KakaoCallback: async () => {
+    return HAJAPI.get("/auth/kakao/callback")
       .then((res) => res)
       .catch((err) => err);
   },
@@ -44,13 +67,13 @@ export const User = {
       .then((res) => res)
       .catch((err) => err);
   },
-  CheckEmail: async () => {
-    return HAJAPI.get("/user/check-email")
+  CheckEmail: async (data) => {
+    return HAJAPI.post("/user/check-email", data)
       .then((res) => res)
       .catch((err) => err);
   },
-  CheckOauth: async () => {
-    return HAJAPI.get("/user/check-oauth")
+  CheckOauth: async (data) => {
+    return HAJAPI.post("/user/check-oauth", data)
       .then((res) => res)
       .catch((err) => err);
   },

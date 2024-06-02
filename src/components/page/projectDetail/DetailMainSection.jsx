@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Project } from "../../../utils/repository";
 
-export default function DatailMain() {
+export default function DetailMain() {
+  const { id } = useParams();
+  const [detail, setDetail] = useState();
+
+  const fetch = async () => {
+    const detailData = await Project.ProjectDetail(id);
+    setDetail(detailData);
+  };
+
+  useEffect(() => {
+    fetch();
+  }, [id]);
+
   return (
     <div className="w-full py-4 px-10 flex justify-center">
       <div className="w-full mb-6 items-center flex flex-col">

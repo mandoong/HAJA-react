@@ -9,24 +9,23 @@ export default function AuthPage() {
   const searchParams = new URLSearchParams(location.search);
   const oauthId = searchParams.get("oauthId");
   const loginType = searchParams.get("loginType");
+  const accessToken = searchParams.get("accessToken");
 
   const { setToken, token } = useUserStore();
 
   // 테스트용 async 함수
   const fetch = async () => {
-    const result = await Auth.NaverCallback();
-
     const authInfo = { oauthId, loginType };
     const oauthCheck = await User.CheckOauth(authInfo);
     const { requireInfo } = oauthCheck.data;
 
-    if (!requireInfo) {
+    if (requireInfo) {
       window.opener.location.href = "/user";
       window.opener.localStorage.setItem("oauthId", oauthId);
       window.opener.localStorage.setItem("loginType", loginType);
       window.close();
     } else {
-      // window.opener.localStorage.setItem("oauthId", result.data.accessToken);
+      window.opener.localStorage.setItem("accessToken", accessToken);
       window.opener.dispatchEvent(new Event("token"));
       window.close();
     }
@@ -34,8 +33,10 @@ export default function AuthPage() {
   useEffect(() => {
     if (oauthId && loginType) {
       fetch();
+    } else if (accessToken) {
+      fetch();
     }
-  }, [oauthId, loginType]);
+  }, [oauthId, loginType, accessToken]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import usePostStore from "../../store/usePostStore";
+import { usePostStore } from "../../store/store";
 import LoungeList from "./List";
 import LoungeRankTap from "./RankTap";
 import LoungeTagTap from "./TagTap";

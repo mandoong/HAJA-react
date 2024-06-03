@@ -8,8 +8,16 @@ export const useStore = create((set) => ({
   updateBears: (newBears) => set({ bears: newBears }),
 }));
 
-export const useUserStore = create((set) => ({
-  token: window.localStorage.getItem("accessToken") || null,
-  setToken: (token) => set({ token }),
-  removeToken: () => set({ token: null }),
-}));
+export const useUserStore = create(
+  persist(
+    (set, get) => ({
+      token: null,
+      setToken: (token) => set({ token }),
+      removeToken: () => set({ token: null }),
+    }),
+    {
+      name: "token_storage",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);

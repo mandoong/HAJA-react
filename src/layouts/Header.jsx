@@ -19,20 +19,20 @@ export default function LayoutHeader() {
   const { token, setToken, removeToken } = useUserStore();
 
   const getToken = () => {
-    const storgeToken = window.localStorage.getItem("oauthId");
+    const storgeToken = window.localStorage.getItem("accessToken");
     if (storgeToken) setToken(storgeToken);
   };
 
   useEffect(() => {
-    const checkLogin = async () => {
-      if (HAJAPI.defaults.headers.common.Authorization) {
-        setIsLogin(true);
-      } else {
-        setIsLogin(false);
-      }
-    };
+    // const checkLogin = async () => {
+    //   if (HAJAPI.defaults.headers.common.Authorization) {
+    //     setIsLogin(true);
+    //   } else {
+    //     setIsLogin(false);
+    //   }
+    // };
 
-    checkLogin();
+    // checkLogin();
 
     window.addEventListener("token", getToken);
 
@@ -41,10 +41,13 @@ export default function LayoutHeader() {
     };
   }, []);
 
+  const handleMypage = () => {
+    navigate("/user/me");
+  };
+
   const handleLogout = () => {
     window.localStorage.removeItem("oauthId"); // 토큰 삭제
     window.localStorage.removeItem("loginType"); // 토큰 삭제
-    setIsLogin(false);
     removeToken();
     navigate("/"); // 로그아웃 시 메인 페이지
   };
@@ -81,9 +84,9 @@ export default function LayoutHeader() {
           </div>
           {token ? (
             <div className="flex gap-6">
-              <Link to="/user/me">
+              <button type="button" onClick={handleMypage}>
                 <UserCircleIcon className="w-6" />
-              </Link>
+              </button>
               <button type="button" onClick={handleLogout}>
                 <ArrowRightStartOnRectangleIcon className="w-6" />
               </button>

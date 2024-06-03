@@ -12,7 +12,11 @@ export default function SignupModal({ isOpen, onClose }) {
           className="flex justify-center items-center w-96 h-auto bg-white rounded-md px-8 py-10 relative"
           onClick={onClose}
         >
-          <button type="button" onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className="w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h2 className="font-bold text-2xl mb-6">회원가입</h2>
             <button
               type="button"
@@ -21,7 +25,7 @@ export default function SignupModal({ isOpen, onClose }) {
             >
               ❌
             </button>
-            <div className="flex flex-col justify-center items-center">
+            <div className="w-full flex flex-col justify-center items-center">
               <SignupButton site="네이버" />
               <SignupButton site="카카오" />
               <SignupButton site="구글" />

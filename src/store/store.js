@@ -8,7 +8,7 @@ export const useStore = create((set) => ({
 }));
 
 export const useUserStore = create((set) => ({
-  token: null,
+  token: window.localStorage.getItem("accessToken") || null,
   setToken: (token) => set({ token }),
   removeToken: () => set({ token: null }),
 }));

@@ -41,7 +41,6 @@ export default function LoginModal({ isOpen, onClose }) {
     isOpen && (
       // 배경
       <div className="fixed top-0 left-0 w-full h-full z-50 flex justify-center items-center bg-black bg-opacity-50">
-        {token}
         {/* 모달 */}
         <button
           type="button"

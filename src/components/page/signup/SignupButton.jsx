@@ -45,7 +45,7 @@ function SignupButton({ site }) {
       className={`w-full text-white font-bold py-2 px-4 rounded ${buttonColorClass}`}
       onClick={handleButtonClick}
     >
-      <i className={`${buttonIcon}`} /> {site}로 회원가입
+      <i className={`${buttonIcon}`} /> {site}
     </button>
   );
 }

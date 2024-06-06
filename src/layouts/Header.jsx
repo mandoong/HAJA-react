@@ -90,12 +90,8 @@ export default function LayoutHeader() {
             </div>
           ) : (
             <div className="flex">
-              <button type="button">
-                <Signup />
-              </button>
-              <button type="button">
-                <Login />
-              </button>
+              <Signup />
+              <Login />
             </div>
           )}
         </div>

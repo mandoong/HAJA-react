@@ -9,7 +9,6 @@ export default function LayoutDefault({ children }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(window.scrollTop);
   }, [pathname]);
 
   return (

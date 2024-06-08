@@ -1,6 +1,11 @@
 import HAJAPI from "./api";
 
 export const Project = {
+  Project: async (data) => {
+    return HAJAPI.post(data)
+      .then((res) => res)
+      .catch((err) => err);
+  },
   ProjectList: async (page = 1, perPage = 10) => {
     return HAJAPI.get(`/project?page=${page}&perPage=${perPage}`)
       .then((res) => res)

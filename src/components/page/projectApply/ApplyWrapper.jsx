@@ -1,6 +1,6 @@
 import BasicWrapper from "../../basic/card/Wrapper";
 
-export default function ProjectApply() {
+export default function ApplyWrapper() {
   const wrapperItems = [
     {
       title: "프로젝트 생성",

@@ -28,15 +28,6 @@ export default function LoungeList({ posts }) {
         })}
       </div>
       <div className="p-5">
-        {/* {Array(10)
-          .fill({})
-          .map((e) => {
-            return (
-              <div key={e}>
-                <LoungeCard title="제목" content="내용" />
-              </div>
-            );
-          })} */}
         {posts.length > 0 ? (
           posts.map((post) => (
             <div key={post.id}>

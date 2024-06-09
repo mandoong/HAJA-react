@@ -6,12 +6,12 @@ import LoungeTagTap from "./TagTap";
 
 export default function Lounge() {
   const { posts, fetchPosts, isLoadingPosts } = usePostStore();
-  // const postsList = posts.data.nodes;
-  // console.log(posts.data.nodes);
 
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
+
+  console.log(posts);
 
   return (
     <div className="flex w-full">
@@ -19,7 +19,7 @@ export default function Lounge() {
       {isLoadingPosts ? (
         <div>스피너 넣기</div>
       ) : (
-        <LoungeList posts={posts.data.nodes} />
+        <LoungeList posts={posts.nodes} />
       )}
       <LoungeRankTap />
     </div>

@@ -16,7 +16,7 @@ export const useUserStore = create((set) => ({
 }));
 
 export const usePostStore = create((set, get) => ({
-  posts: [],
+  posts: {},
   isLoadingPosts: false,
   page: 1,
   perPage: 10,
@@ -31,8 +31,8 @@ export const usePostStore = create((set, get) => ({
     set({ isLoadingPosts: true });
     try {
       const { page, perPage, query } = get();
-      const data = await Post.fetchPosts({ page, perPage, query });
-      set({ posts: data });
+      const res = await Post.fetchPosts({ page, perPage, query });
+      set({ posts: res.data });
     } catch (err) {
       console.error("fetching Posts error:", err);
     } finally {

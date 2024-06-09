@@ -15,16 +15,23 @@ export const useUserStore = create((set) => ({
   removeToken: () => set({ token: null }),
 }));
 
-export const usePostStore = create((set) => ({
+export const usePostStore = create((set, get) => ({
   posts: [],
   isLoadingPosts: false,
+  page: 1,
+  perPage: 10,
+  query: "",
 
   setPosts: (posts) => set({ posts }),
+  setPage: (page) => set({ page }),
+  setPerPage: (perPage) => set({ perPage }),
+  setQuery: (query) => set({ query }),
 
   fetchPosts: async () => {
     set({ isLoadingPosts: true });
     try {
-      const data = await Post.fetchPosts();
+      const { page, perPage, query } = get();
+      const data = await Post.fetchPosts({ page, perPage, query });
       set({ posts: data });
     } catch (err) {
       console.error("fetching Posts error:", err);

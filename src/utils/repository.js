@@ -85,9 +85,9 @@ export const User = {
 };
 
 export const Post = {
-  fetchPosts: async () => {
-    return HAJAPI.get("/post")
-      .then((res) => res.data.nodes)
+  fetchPosts: async ({ page, perPage, query }) => {
+    return HAJAPI.get(`/post?page=${page}&perPage=${perPage}&query=${query}`)
+      .then((res) => res)
       .catch((err) => err);
   },
   addPost: async (data) => {

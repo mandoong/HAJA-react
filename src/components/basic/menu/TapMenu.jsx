@@ -3,7 +3,7 @@ import React from "react";
 export default function TabMenu({ tabItems, activeTab, onTabClick }) {
   return (
     <div>
-      <div className="w-[800px] flex  bg-[f8f8f8]">
+      <div className="w-[800px] flex ">
         {tabItems.map((tab) => (
           <div key={tab.id} className="w-full shadow-inner 0 0 #0000">
             <button

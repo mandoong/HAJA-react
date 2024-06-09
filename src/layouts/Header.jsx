@@ -48,33 +48,47 @@ export default function LayoutHeader() {
   const handleLogout = () => {
     window.localStorage.removeItem("oauthId"); // 토큰 삭제
     window.localStorage.removeItem("loginType"); // 토큰 삭제
+    window.localStorage.removeItem("accessToken"); // 토큰 삭제
+
     removeToken();
     navigate("/"); // 로그아웃 시 메인 페이지
   };
   return (
-    <div className="shadow-md z-10">
-      <div className="flex h-16 px-10 items-center justify-betweena">
-        <div className="w-full flex items-center gap-10">
-          <Link to="/">로고</Link>
-          <div className="w-96 text-[10px] md:hidden justify-around h-10 items-center flex">
-            <Link className="hover:text-orange-400" to="/project">
-              모임
-            </Link>
-            <Link className="hover:text-orange-400" to="/project">
-              프로덕트
-            </Link>
-            <Link className="hover:text-orange-400" to="/">
-              하자인
-            </Link>
-            {/* <Link className="hover:text-orange-400" to="/">
-              퀘스트
-            </Link> */}
-            <Link className="hover:text-orange-400" to="/lounge">
-              라운지
+    <div className="bg-[white] shadow-md z-10 sticky top-0">
+      <div className="flex justify-between mx-auto max-w-[1300px] items-center">
+        <div className="flex h-16 px-10 items-center justify-between">
+          <div className="w-full flex items-center gap-10">
+            <Link to="/" className="w-20">
+              <img src="/img/hajaLogo.png" alt="HAJA Logo" />
             </Link>
           </div>
         </div>
-
+        <div className="w-full text-mx md:flex justify-start h-10 items-center hidden">
+          <Link
+            className="hover:text-blue-400 ml-12 font-bold text-gray-600"
+            to="/project"
+          >
+            프로젝트
+          </Link>
+          {/* <Link className="hover:text-orange-400" to="/project">
+            프로덕트
+          </Link> */}
+          <Link
+            className="hover:text-blue-400 ml-40 font-bold text-gray-600"
+            to="/"
+          >
+            하자인
+          </Link>
+          {/* <Link className="hover:text-orange-400" to="/">
+          퀘스트
+        </Link> */}
+          <Link
+            className="hover:text-blue-400 ml-40 font-bold text-gray-600"
+            to="/lounge"
+          >
+            라운지
+          </Link>
+        </div>
         <div className="flex gap-6">
           <div>
             <MagnifyingGlassIcon className="w-6" />
@@ -98,23 +112,6 @@ export default function LayoutHeader() {
             </div>
           )}
         </div>
-      </div>
-      <div className="w-full text-sm md:flex justify-around h-10 items-center hidden">
-        <Link className="hover:text-orange-400" to="/project">
-          모임
-        </Link>
-        <Link className="hover:text-orange-400" to="/project">
-          프로덕트
-        </Link>
-        <Link className="hover:text-orange-400" to="/">
-          하자인
-        </Link>
-        {/* <Link className="hover:text-orange-400" to="/">
-          퀘스트
-        </Link> */}
-        <Link className="hover:text-orange-400" to="/lounge">
-          라운지
-        </Link>
       </div>
     </div>
   );

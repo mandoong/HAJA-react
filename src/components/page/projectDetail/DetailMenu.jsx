@@ -21,7 +21,7 @@ export default function DetailMenu() {
 
   return (
     <div>
-      <div className="w-full mx-auto sticky top-0 bg-[#f8f8f8]">
+      <div className="w-full mx-auto sticky top-16 bg-[#f8f8f8]">
         <TabMenu
           tabItems={tabItems}
           activeTab={activeTab}

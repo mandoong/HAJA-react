@@ -9,7 +9,16 @@ if (Token) {
   HAJAPI.defaults.headers.common.Authorization = `Bearer ${Token}`;
   console.log(HAJAPI.defaults.headers.common.Authorization);
 }
-
+HAJAPI.interceptors.request.use((config) => {
+  console.log(config.headers);
+  console.log(window.localStorage.getItem("accessToken"));
+  return {
+    ...config,
+    headers: {
+      Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
+    },
+  };
+});
 HAJAPI.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -19,7 +28,8 @@ HAJAPI.interceptors.response.use(
         window.localStorage.removeItem("oauthId");
         const url = window.location.href;
         window.localStorage.setItem("redirect", url);
-        window.location.href = "/";
+        // 추후 디벨롭 필요
+        // window.location.href = "/";
       }
     }
     return Promise.reject(error.response);

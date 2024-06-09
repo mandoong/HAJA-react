@@ -2,7 +2,7 @@ import HAJAPI from "./api";
 
 export const Project = {
   Project: async (data) => {
-    return HAJAPI.post(data)
+    return HAJAPI.post("/project", data)
       .then((res) => res)
       .catch((err) => err);
   },

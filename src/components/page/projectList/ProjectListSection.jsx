@@ -11,14 +11,10 @@ export default function ProjectListSection() {
   const [totalPages, setTotalPages] = useState(1);
 
   const fetch = async (page = 1) => {
-    try {
-      const result = await Project.ProjectList(page, 12);
-      setData(result.data.nodes);
-      setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
-      console.log(Math.ceil(result.data.count / 12));
-    } catch (error) {
-      console.log("Fail", error);
-    }
+    const result = await Project.ProjectList(page, 12);
+    setData(result.data.nodes);
+    setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
+    console.log(Math.ceil(result.data.count / 12));
   };
 
   useEffect(() => {

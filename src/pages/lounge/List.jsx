@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LoungeCard from "../../components/page/lounge/Card";
 
-export default function LoungeList({ posts }) {
+export default function LoungeList({ posts, lastPostRef }) {
   const [currentTap, setCurrentTap] = useState("all");
 
   const tapItems = [
@@ -29,11 +29,22 @@ export default function LoungeList({ posts }) {
       </div>
       <div className="p-5">
         {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.id}>
-              <LoungeCard title={post.title} content={post.content} />
-            </div>
-          ))
+          posts.map((post, index) => {
+            if (posts.length === index + 1) {
+              return (
+                <div ref={lastPostRef} key={post.id}>
+                  <LoungeCard title={post.title} content={post.content} />
+                </div>
+              );
+            }
+            return (
+              <LoungeCard
+                key={post.id}
+                title={post.title}
+                content={post.content}
+              />
+            );
+          })
         ) : (
           <div className="mt-10 text-center">등록된 글이 없습니다.</div>
         )}

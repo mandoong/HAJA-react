@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LoungeCard from "../../components/page/lounge/Card";
+import LoungeCard from "../../components/page/lounge/card";
 
 export default function LoungeList({ posts, lastPostRef }) {
   const [currentTap, setCurrentTap] = useState("all");

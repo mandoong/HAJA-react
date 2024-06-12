@@ -1,40 +1,24 @@
+import { useEffect, useState } from "react";
 import { HeartIcon, StarIcon } from "@heroicons/react/20/solid";
 import BasicButton from "../../components/basic/button";
 import BasicCardImgCard from "../../components/basic/card/ImgCard";
+import { Post, Project } from "../../utils/repository";
 
 export default function HomeNewsSection() {
-  const listitems = [
-    {
-      title: "라이너블",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "차곡차곡",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "단백집",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "라이너블1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "차곡차곡1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "단백집1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  const getPost = async () => {
+    const { data } = await Project.ProjectList(1, 10);
+
+    console.log(data.nodes);
+
+    setPosts(data?.nodes);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
   return (
     <div className="w-full pt-10 max-w-[1400px]">
       <div className="w-full mb-10">
@@ -42,12 +26,12 @@ export default function HomeNewsSection() {
           새로운&apos; 프로덕트 부스
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {listitems.map((e) => {
+          {posts.map((e) => {
             return (
               <BasicCardImgCard
-                key={e.title}
+                key={e.id}
                 title={e.title}
-                desc={e.desc}
+                desc={e.description}
                 img={e.img}
               >
                 <div className="w-full flex justify-between py-6 items-center">
@@ -88,7 +72,7 @@ export default function HomeNewsSection() {
           완성 노하우&apos; A-Z
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {listitems.slice(0, 3).map((e) => {
+          {posts.slice(0, 3).map((e) => {
             return (
               <BasicCardImgCard
                 key={e.title}
@@ -111,7 +95,7 @@ export default function HomeNewsSection() {
           금주의 레벨업
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {listitems.map((e) => {
+          {posts.map((e) => {
             return (
               <div key={e?.title}>
                 <div className="w-full aspect-[1.4/1] bg-slate-300 rounded-lg flex justify-center items-center mb-4">

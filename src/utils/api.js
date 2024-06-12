@@ -10,8 +10,6 @@ if (Token) {
   console.log(HAJAPI.defaults.headers.common.Authorization);
 }
 HAJAPI.interceptors.request.use((config) => {
-  console.log(config.headers);
-  console.log(window.localStorage.getItem("accessToken"));
   return {
     ...config,
     headers: {
@@ -22,7 +20,6 @@ HAJAPI.interceptors.request.use((config) => {
 HAJAPI.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.log(error);
     if (error.response) {
       if (error.response.status === 401) {
         window.localStorage.removeItem("oauthId");

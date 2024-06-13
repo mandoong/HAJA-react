@@ -95,4 +95,11 @@ export const Post = {
       .then((res) => res)
       .catch((err) => err);
   },
+  GetPosts: async (perPage, page, query) => {
+    return HAJAPI.get(
+      `/post?perPage=${perPage}&page=${page}${query ? `&query=${query}` : ""}`
+    )
+      .then((res) => res)
+      .catch((err) => err);
+  },
 };

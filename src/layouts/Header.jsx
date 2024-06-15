@@ -11,9 +11,11 @@ import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
 import { useUserStore } from "../store/store";
 import Login from "../pages/login";
+import SaveModal from "../components/page/user/SaveModal";
 
 export default function LayoutHeader() {
   const [isLogin, setIsLogin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const { token, setToken, removeToken } = useUserStore();
@@ -45,6 +47,14 @@ export default function LayoutHeader() {
     navigate("/user/me");
   };
 
+  const handleLogincheck = () => {
+    if (token) {
+      navigate("/project/apply");
+    } else {
+      setShowModal(true);
+    }
+  };
+
   const handleLogout = () => {
     window.localStorage.removeItem("oauthId"); // 토큰 삭제
     window.localStorage.removeItem("loginType"); // 토큰 삭제
@@ -52,6 +62,10 @@ export default function LayoutHeader() {
 
     removeToken();
     navigate("/"); // 로그아웃 시 메인 페이지
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
   return (
     <div className="bg-[white] shadow-md z-10 sticky top-0">
@@ -93,9 +107,9 @@ export default function LayoutHeader() {
           <div>
             <MagnifyingGlassIcon className="w-6" />
           </div>
-          <div>
+          <button type="button" onClick={handleLogincheck}>
             <PencilIcon className="w-6" />
-          </div>
+          </button>
           {token ? (
             <div className="flex gap-6">
               <button type="button" onClick={handleMypage}>
@@ -113,6 +127,11 @@ export default function LayoutHeader() {
           )}
         </div>
       </div>
+      <SaveModal
+        isOpen={showModal}
+        onClose={closeModal}
+        message="로그인 후 글 작성이 가능합니다."
+      />
     </div>
   );
 }

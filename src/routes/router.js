@@ -11,6 +11,7 @@ import Lounge from "../pages/lounge";
 import AuthPage from "../components/page/auth/Auth";
 import UserMypage from "../pages/user";
 import SignupInfo from "../pages/signup/SignupInfo";
+import UserList from "../pages/userList";
 
 export default createBrowserRouter([
   {
@@ -29,6 +30,7 @@ export default createBrowserRouter([
         element: <AboutId />,
       },
       { path: "/project", element: <ProjectList /> },
+      { path: "/user", element: <UserList /> },
       { path: "/project/:id", element: <ProjectDetail /> },
       { path: "/project/Apply", element: <ProjectApply /> },
       { path: "/user/me", element: <UserMypage /> },

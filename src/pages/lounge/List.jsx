@@ -1,8 +1,7 @@
-import { click } from "@testing-library/user-event/dist/click";
 import { useState } from "react";
 import LoungeCard from "../../components/page/lounge/card";
 
-export default function LoungeList({ posts }) {
+export default function LoungeList({ posts, lastPostRef }) {
   const [currentTap, setCurrentTap] = useState("all");
 
   const tapItems = [
@@ -29,21 +28,23 @@ export default function LoungeList({ posts }) {
         })}
       </div>
       <div className="p-5">
-        {/* {Array(10)
-          .fill({})
-          .map((e) => {
+        {posts?.length > 0 ? (
+          posts?.map((post, index) => {
+            if (posts.length === index + 1) {
+              return (
+                <div ref={lastPostRef} key={post.id}>
+                  <LoungeCard title={post.title} content={post.content} />
+                </div>
+              );
+            }
             return (
-              <div key={e}>
-                <LoungeCard title="제목" content="내용" />
-              </div>
+              <LoungeCard
+                key={post.id}
+                title={post.title}
+                content={post.content}
+              />
             );
-          })} */}
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.id}>
-              <LoungeCard title={post.title} content={post.content} />
-            </div>
-          ))
+          })
         ) : (
           <div className="mt-10 text-center">등록된 글이 없습니다.</div>
         )}

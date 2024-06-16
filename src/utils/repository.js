@@ -1,6 +1,11 @@
 import HAJAPI from "./api";
 
 export const Project = {
+  Project: async (data) => {
+    return HAJAPI.post("/project", data)
+      .then((res) => res)
+      .catch((err) => err);
+  },
   ProjectList: async (page = 1, perPage = 10) => {
     return HAJAPI.get(`/project?page=${page}&perPage=${perPage}`)
       .then((res) => res)
@@ -77,12 +82,29 @@ export const User = {
       .then((res) => res)
       .catch((err) => err);
   },
+  GetUser: async (page = 1, perPage = 10) => {
+    return HAJAPI.get(`/user?page=${page}&perPage=${perPage}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
 };
 
 export const Post = {
-  fetchPosts: async () => {
-    return HAJAPI.get("/post")
-      .then((res) => res.data.nodes)
+  fetchPosts: async ({ page, perPage, query }) => {
+    return HAJAPI.get(`/post?page=${page}&perPage=${perPage}&query=${query}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  addPost: async (data) => {
+    return HAJAPI.post("/post", data)
+      .then((res) => res)
+      .catch((err) => err);
+  },
+  GetPosts: async (perPage, page, query) => {
+    return HAJAPI.get(
+      `/post?perPage=${perPage}&page=${page}${query ? `&query=${query}` : ""}`
+    )
+      .then((res) => res)
       .catch((err) => err);
   },
 };

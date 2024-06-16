@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import BasicCardImgCard from "../../basic/card/ImgCard";
-import { Project } from "../../../utils/repository";
+import { User } from "../../../utils/repository";
+import BasicUserProfile from "../../basic/user/UserProfile";
 
-export default function ProjectListSection() {
+export default function UserListSection() {
   const [data, setData] = useState([]);
   const [numColumns, setNumColumns] = useState(4); // 한 줄에 표시할 개수
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   const fetch = async (page = 1) => {
-    const result = await Project.ProjectList(page, 12);
+    const result = await User.GetUser(page, 12);
     setData(result.data.nodes);
+    console.log(data);
     setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
-    console.log(Math.ceil(result.data.count / 12));
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function ProjectListSection() {
   };
 
   return (
-    <div className="w-full py-4 px-10">
+    <div className="w-full py-4 pt-10 px-10">
       <div
         className="grid gap-5 justify-center "
         style={{
@@ -77,26 +77,28 @@ export default function ProjectListSection() {
         {data.length > 0 ? (
           data.map((e) => (
             <div key={e.id}>
-              <BasicCardImgCard
+              <BasicUserProfile
                 key={e.id}
                 img={e.thumbnailUrl}
+                nickname={e.nickname}
                 title={e.title}
-                desc={e.platform}
+                email={e.email}
                 like
+                note
               >
-                <div className="flex justify-between items-center">
-                  <div className="text-xs text-[#afafaf] ml-auto">
-                    by {e.userId}
+                <div className="text-sm px-3 pb-3">
+                  <div className="flex justify-between mb-3 text-[#888888]" />
+                  <hr className="w-full" />
+                  <div className="flex text-xs pt-2">
+                    <button
+                      type="button"
+                      className="w-full mx-1 h-6 rounded-md bg-blue-300 hover:bg-blue-500 text-xs font-bold text-[white]"
+                    >
+                      모임 초대하기
+                    </button>
                   </div>
                 </div>
-                <hr className="my-4" />
-                <Link
-                  className="w-full py-2 rounded-full flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
-                  to={`/project/${e.id}`}
-                >
-                  프로젝트 자세히 보기
-                </Link>
-              </BasicCardImgCard>
+              </BasicUserProfile>
             </div>
           ))
         ) : (

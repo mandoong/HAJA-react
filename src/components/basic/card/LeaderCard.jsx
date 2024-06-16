@@ -14,8 +14,12 @@ export default function LeaderCard({
       <div className="gap-3">
         <div className="mt-3">리더정보</div>
         <div className="flex justify-between gap-2">
-          <div className="w-full h-full aspect-square rounded-md p-8 border border-gray-300">
-            <img src={img} alt="" />
+          <div className="h-[50px] aspect-square rounded-md flex items-center bg-slate-400">
+            <img
+              src={img}
+              alt=""
+              className="w-full h-full object-cover rounded-md"
+            />
           </div>
           <div className="flex flex-col">
             <div className="text-sm mb-2">{name}</div>

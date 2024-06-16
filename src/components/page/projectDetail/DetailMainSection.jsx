@@ -15,24 +15,57 @@ export default function DetailMain() {
     fetch();
   }, [id]);
 
+  if (!detail) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="w-full py-4 px-10 flex justify-center">
-      <div className="w-full mb-6 items-center flex flex-col">
-        <Link
-          className="w-24 h-10 border rounded-lg flex justify-center items-center text-sm text-[white] bg-[#594bba]"
-          to="/"
-        >
-          프로젝트
-        </Link>
-        <div className="w-full font-roboto text-[2vw] whitespace-nowrap text-center">
-          [서울] 리액트 스터디
-        </div>
-        <div className="flex justify-center items-center space-x-3">
-          <div className="w-16 h-8 border-[#f2f2f2] rounded-full flex items-center justify-center text-[0.6vw] text-[black] bg-[#f2f2f2]">
-            모집중
+    <div className="w-full py-4">
+      <div className="text-xl font-bold mb-4">모집 현황</div>
+      <div className="w-[400px] space-y-4">
+        <div className="flex justify-between items-center py-2">
+          <div className="flex-1">{detail.data.requiredValue}</div>
+          <div className="flex-1 text-center text-red-400">
+            {detail.data.countOfRecruited}/{detail.data.countOfRecruitment}
           </div>
-          <div className="w-16 h-8 border-[#f2f2f2] rounded-full flex items-center justify-center text-[0.6vw] text-[black] bg-[white]">
-            진행중
+          <button
+            type="button"
+            className="flex-1 border px-2 py-1 rounded bg-[#594bba] text-white"
+          >
+            지원하기
+          </button>
+        </div>
+      </div>
+      <div className="mt-4 border-b" />
+      <div className="mt-8 p-4 bg-gray-100 rounded flex flex-col items-center">
+        <div className="font-bold mb-2">
+          * 지원 시, 아래는 필수 입력값입니다 (총 8개)
+        </div>
+        <div className="text-xs">
+          이메일, 지원직군, 지원사유, 직장인/취준생 여부, 주요 활동지역,
+          경험/경력설명, 자기소개, 투자가능시간 (1주당)
+        </div>
+      </div>
+      <div className="mt-10 border-b" />
+      <div className="text-xl font-bold mb-4 mt-10">소개</div>
+      <div className="text-ms">{detail.data.introduction}</div>
+      <div className="text-ms">{detail.data.description}</div>
+      <div className="mt-10 border-b" />
+      <div className="w-full flex">
+        <div className="w-full space-y-4 py-10">
+          <div className="flex justify-between items-center py-2">
+            <div className="flex-1">출시 플랫폼</div>
+            <div className="flex-1 text-center text-red-400">
+              {detail.data.platform}
+            </div>
+          </div>
+        </div>
+        <div className="w-full space-y-4 py-10">
+          <div className="flex justify-between items-center py-2">
+            <div className="flex-1">미팅 시 선호하는 채널</div>
+            <div className="flex-1 text-center text-red-400">
+              {detail.data.meetingMethod}
+            </div>
           </div>
         </div>
       </div>

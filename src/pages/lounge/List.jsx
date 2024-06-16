@@ -1,7 +1,8 @@
 import { useState } from "react";
-import LoungeCard from "../../components/page/lounge/card";
+import SkeletonCard from "../../components/page/lounge/SkeletonCard";
+import LoungeCard from "../../components/page/lounge/Card";
 
-export default function LoungeList({ posts, lastPostRef }) {
+export default function LoungeList({ posts, lastPostRef, isLoading }) {
   const [currentTap, setCurrentTap] = useState("all");
 
   const tapItems = [
@@ -10,6 +11,35 @@ export default function LoungeList({ posts, lastPostRef }) {
     { name: "프로젝트", item: "project" },
     { name: "하자인", item: "user" },
   ];
+
+  const renderPosts = () => {
+    if (isLoading) {
+      return (
+        <div>
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      );
+    }
+
+    if (posts.length === 0) {
+      return <div className="mt-10 text-center">등록된 글이 없습니다.</div>;
+    }
+
+    return posts.map((post, index) => {
+      if (posts.length === index + 1) {
+        return (
+          <div ref={lastPostRef} key={post.id}>
+            <LoungeCard title={post.title} content={post.content} />
+          </div>
+        );
+      }
+      return (
+        <LoungeCard key={post.id} title={post.title} content={post.content} />
+      );
+    });
+  };
 
   return (
     <div className="flex-1 border-r">

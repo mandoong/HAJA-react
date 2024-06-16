@@ -28,8 +28,8 @@ export default function LoungeList({ posts, lastPostRef }) {
         })}
       </div>
       <div className="p-5">
-        {posts.length > 0 ? (
-          posts.map((post, index) => {
+        {posts?.length > 0 ? (
+          posts?.map((post, index) => {
             if (posts.length === index + 1) {
               return (
                 <div ref={lastPostRef} key={post.id}>

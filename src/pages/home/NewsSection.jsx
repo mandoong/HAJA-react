@@ -10,8 +10,6 @@ export default function HomeNewsSection() {
   const getPost = async () => {
     const { data } = await Project.ProjectList(1, 10);
 
-    console.log(data.nodes);
-
     setPosts(data?.nodes);
   };
 
@@ -26,7 +24,7 @@ export default function HomeNewsSection() {
           새로운&apos; 프로덕트 부스
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {posts.map((e) => {
+          {posts?.map((e) => {
             return (
               <BasicCardImgCard
                 key={e.id}
@@ -72,7 +70,7 @@ export default function HomeNewsSection() {
           완성 노하우&apos; A-Z
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {posts.slice(0, 3).map((e) => {
+          {posts?.slice(0, 3).map((e) => {
             return (
               <BasicCardImgCard
                 key={e.title}
@@ -95,7 +93,7 @@ export default function HomeNewsSection() {
           금주의 레벨업
         </div>
         <div className="grid grid-cols-3 gap-4">
-          {posts.map((e) => {
+          {posts?.map((e) => {
             return (
               <div key={e?.title}>
                 <div className="w-full aspect-[1.4/1] bg-slate-300 rounded-lg flex justify-center items-center mb-4">

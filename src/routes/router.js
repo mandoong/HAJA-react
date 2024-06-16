@@ -11,6 +11,7 @@ import Lounge from "../pages/lounge";
 import AuthPage from "../components/page/auth/Auth";
 import UserMypage from "../pages/user";
 import SignupInfo from "../pages/signup/SignupInfo";
+import NewPost from "../pages/lounge/NewPost";
 
 export default createBrowserRouter([
   {
@@ -37,6 +38,7 @@ export default createBrowserRouter([
         element: <Signup />,
       },
       { path: "/lounge", element: <Lounge /> },
+      { path: "/lounge/write", element: <NewPost /> },
       { path: "/user", element: <SignupInfo /> },
     ],
   },

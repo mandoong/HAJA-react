@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LoungeCard from "../../components/page/lounge/card";
+import LoungeCard from "../../components/page/lounge/Card";
 import SkeletonCard from "../../components/page/lounge/SkeletonCard";
 
 export default function LoungeList({ posts, lastPostRef, isLoading }) {

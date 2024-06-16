@@ -89,7 +89,7 @@ export default function LayoutHeader() {
           </Link> */}
           <Link
             className="hover:text-blue-400 ml-40 font-bold text-gray-600"
-            to="/"
+            to="/user"
           >
             하자인
           </Link>

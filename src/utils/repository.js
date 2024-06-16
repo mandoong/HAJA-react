@@ -82,6 +82,11 @@ export const User = {
       .then((res) => res)
       .catch((err) => err);
   },
+  GetUser: async (page = 1, perPage = 10) => {
+    return HAJAPI.get(`/user?page=${page}&perPage=${perPage}`)
+      .then((res) => res)
+      .catch((err) => err);
+  },
 };
 
 export const Post = {

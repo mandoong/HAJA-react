@@ -83,11 +83,11 @@ export default function Lounge() {
   return (
     <div className="flex w-full">
       <LoungeTagTap />
-      {isLoadingPosts ? (
-        <div>스피너 넣기</div>
-      ) : (
-        <LoungeList posts={posts} lastPostRef={lastPostRef} />
-      )}
+      <LoungeList
+        posts={posts}
+        lastPostRef={lastPostRef}
+        isLoading={isLoadingPosts}
+      />
       <LoungeRankTap />
     </div>
   );

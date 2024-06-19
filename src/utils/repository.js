@@ -96,14 +96,11 @@ export const Post = {
       .catch((err) => err);
   },
   addPost: async (data) => {
-    return HAJAPI.post("/post", data)
-      .then((res) => res)
-      .catch((err) => err);
-  },
-  GetPosts: async (perPage, page, query) => {
-    return HAJAPI.get(
-      `/post?perPage=${perPage}&page=${page}${query ? `&query=${query}` : ""}`
-    )
+    return HAJAPI.post("/post", data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res)
       .catch((err) => err);
   },

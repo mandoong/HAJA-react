@@ -7,6 +7,10 @@ module.exports = {
         roboto: ["roboto"],
         over: ["over"],
         over_b: ["over-bold"],
+        hangang: ["hangang"],
+        namsan: ["namsan"],
+        binggrae: ["binggrae"],
+        iropke: ["iropke"],
       },
       spacing: {
         72: "18rem",

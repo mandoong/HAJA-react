@@ -1,51 +1,41 @@
+import { useEffect, useState } from "react";
 import { HeartIcon } from "@heroicons/react/20/solid";
 import BasicTopImgCard from "../../components/basic/card/TopImgCard";
+import { Project } from "../../utils/repository";
 
 export default function HomeCardSection() {
-  const listitems = [
-    {
-      title: "라이너블",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "차곡차곡",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "단백집",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "라이너블1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "차곡차곡1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
-    {
-      title: "단백집1",
-      desc: "안녕하세요. 여기는 서비스의 설명란입니다. 원하시는 내영이 표기 되는 공간입니다.",
-      img: "",
-    },
+  const [posts, setPosts] = useState([]);
+
+  const images = [
+    "img/img_1.jpg",
+    "img/img_2.jpg",
+    "img/img_3.jpg",
+    "img/img_4.jpg",
+    "img/img_5.png",
+    "img/img_6.jpg",
   ];
+
+  const getPost = async () => {
+    const { data } = await Project.ProjectList(1, 9);
+
+    setPosts(data?.nodes);
+  };
+
+  useEffect(() => {
+    getPost();
+  }, []);
   return (
     <div className="w-full mb-10">
       <div className="w-full mb-6 text-lg font-bold text-[#526688]">
         새로운 모임
       </div>
       <div className="grid grid-cols-4 gap-4">
-        {listitems.map((e) => {
+        {posts.slice(0, 6).map((e, i) => {
           return (
-            <BasicTopImgCard key={e.title}>
+            <BasicTopImgCard key={e.title} img={images[i]}>
               <div className="text-sm p-3">
-                <div className="text-[#c9c9c9] mb-2">소셜네트워크</div>
-                <div className="mb-4">[서울] 10대 커뮤니티 앱</div>
+                <div className="text-[#6d6c69] mb-2">{e.title}</div>
+                <div className="mb-4">{e.purpose}</div>
                 {/* <div>
                   <div>F</div>
                 </div> */}

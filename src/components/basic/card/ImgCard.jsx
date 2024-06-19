@@ -8,14 +8,14 @@ export default function BasicCardImgCard({
   like = false,
 }) {
   return (
-    <div className="border rounded-lg p-4 hover:border-[#ea6560] transition-colors">
+    <div className="border rounded-lg p-4 hover:border-[#ea6560] transition-colors relative">
       {like && (
         <div className="w-full">
-          <HeartIcon className="w-6 ml-auto text-[#e7e7e7]" />
+          <HeartIcon className="absolute right-4 w-6 ml-auto text-[#e7e7e7]" />
         </div>
       )}
       <div className="flex items-center gap-3 h-16">
-        <div className="h-full aspect-square rounded-md flex items-center bg-slate-400">
+        <div className="h-full p-2 aspect-square rounded-md flex items-center shadow-lg">
           <img
             src={img}
             alt=""
@@ -23,7 +23,7 @@ export default function BasicCardImgCard({
           />
         </div>
         <div className="flex-1">
-          <div className="text-sm mb-2">{title}</div>
+          <div className="text-sm mb-2 font-semibold">{title}</div>
           <div className="text-xs text-[#999] line-clamp-2">{desc}</div>
         </div>
       </div>

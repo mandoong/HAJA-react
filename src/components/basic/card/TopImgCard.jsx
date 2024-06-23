@@ -15,7 +15,7 @@ export default function BasicTopImgCard({
         </div>
       )}
       <div className="w-full h-32 bg-slate-400">
-        <img className="w-full h-full" src={img} alt="" />
+        <img className="w-full h-full object-cover" src={img} alt="" />
       </div>
       <div>{children}</div>
     </div>

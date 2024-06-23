@@ -14,15 +14,25 @@
   font-family: "over-bold";
   src: url("../public/font/Overpass-Bold.ttf");
 }
+
 @font-face {
   font-family: "namsan";
-  src: url("../public/font/SeoulNamsanM.ttf");
+  src: url("../public/font/SeoulNamsanL.ttf");
 }
+
 @font-face {
   font-family: "hangang";
   src: url("../public/font/SeoulHangangM.ttf");
 }
+@font-face {
+  font-family: "binggrae";
+  src: url("../public/font/Binggrae.ttf");
+}
+@font-face {
+  font-family: "iropke";
+  src: url("../public/font/IropkeBatangM.ttf");
+}
 
 body {
-  font-family: "hangang";
+  font-family: "iropke";
 }

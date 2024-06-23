@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HeartIcon, StarIcon } from "@heroicons/react/20/solid";
+import { useNavigate } from "react-router-dom";
 import BasicButton from "../../components/basic/button";
 import BasicCardImgCard from "../../components/basic/card/ImgCard";
 import { Post, Project } from "../../utils/repository";
@@ -29,6 +30,8 @@ export default function HomeNewsSection() {
     "img/img_6.jpg",
   ];
 
+  const navigator = useNavigate();
+
   const getPost = async () => {
     const { data } = await Project.ProjectList(1, 9);
 
@@ -40,7 +43,7 @@ export default function HomeNewsSection() {
   }, []);
 
   return (
-    <div className="w-full pt-10 max-w-[1400px]">
+    <div className="w-full pt-10 max-w-[1400px] min-w-[1000px]">
       <div className="w-full mb-10">
         <div className="w-full mb-6 text-lg font-bold text-[#526688]">
           새로운 프로젝트
@@ -67,7 +70,9 @@ export default function HomeNewsSection() {
                       <div>0.0</div>
                     </div>
                   </div>
-                  <BasicButton>보러가기</BasicButton>
+                  <BasicButton onClick={() => navigator(`/project/${e.id}`)}>
+                    보러가기
+                  </BasicButton>
                 </div>
                 <div className="flex justify-between items-center text-xs text-[#c9c9c9]">
                   <div>최근 업데이트 {e.startDate.split("T")[0]}</div>
@@ -92,9 +97,12 @@ export default function HomeNewsSection() {
                 img={icons[i]}
               >
                 <hr className="my-4" />
-                <div className="w-full py-2 rounded-lg flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]">
+                <button
+                  type="button"
+                  className="w-full py-2 rounded-lg flex justify-center items-center text-sm text-[#8dd4c5] bg-[#edfcfa]"
+                >
                   회고 보러가기
-                </div>
+                </button>
               </BasicCardImgCard>
             );
           })}

@@ -24,7 +24,7 @@ export default function LoungeList({ posts, lastPostRef, isLoading }) {
     }
 
     if (posts.length === 0) {
-      return <div className="mt-10 text-center">등록된 글이 없습니다.</div>;
+      return <div className="mt-10 text-center">등록된 글이 없습니다. </div>;
     }
 
     return posts.map((post, index) => {

@@ -1,12 +1,6 @@
 import { HeartIcon } from "@heroicons/react/20/solid";
 
-export default function BasicTopImgCard({
-  children,
-  img,
-  title,
-  desc,
-  like = false,
-}) {
+export default function BasicTopImgCard({ children, img, like = false }) {
   return (
     <div className="border rounded-lg hover:border-[#ea6560] transition-colors overflow-hidden">
       {like && (

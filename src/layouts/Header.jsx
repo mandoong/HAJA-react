@@ -7,14 +7,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import HAJAPI from "../utils/api";
 import Signup from "../pages/signup";
 import { useUserStore } from "../store/store";
 import Login from "../pages/login";
 import SaveModal from "../components/page/user/SaveModal";
 
 export default function LayoutHeader() {
-  const [isLogin, setIsLogin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 

@@ -34,11 +34,8 @@ export default function NewPost() {
     e.preventDefault();
 
     try {
-      console.log(newPost);
       const response = await Post.addPost(newPost);
-      console.log(response);
       if (response === 200) {
-        console.log("게시글 등록 성공");
         navigate("/lounge");
       }
     } catch (err) {
@@ -46,9 +43,9 @@ export default function NewPost() {
     }
   };
 
-  const saveDraftHandler = () => {
-    // 임시 저장 로직
-  };
+  // const saveDraftHandler = () => {
+  //   // 임시 저장 로직
+  // };
 
   return (
     <form onSubmit={postSubmitHandler} className="max-w-xl mx-auto p-4">

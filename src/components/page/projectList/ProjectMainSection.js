@@ -1,5 +1,3 @@
-import BasicUserProfile from "../../basic/user/UserProfile";
-import SearchBar from "../../../pages/home/SearchBar";
 import "../home/MainSection.css";
 
 export default function ProjectMainSection() {

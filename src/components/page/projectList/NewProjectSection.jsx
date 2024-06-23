@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BasicCardImgCard from "../../basic/card/ImgCard";
 import CommentCard from "../../basic/card/CommentCard";
 import SimpleSlider from "../../basic/card/Slider";
 

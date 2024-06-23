@@ -3,7 +3,7 @@ import { HeartIcon, StarIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "react-router-dom";
 import BasicButton from "../../components/basic/button";
 import BasicCardImgCard from "../../components/basic/card/ImgCard";
-import { Post, Project } from "../../utils/repository";
+import { Project } from "../../utils/repository";
 
 export default function HomeNewsSection() {
   const [posts, setPosts] = useState([]);

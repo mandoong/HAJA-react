@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SignupButton from "../../components/page/signup/SignupButton";
 import { Auth } from "../../utils/repository";
-import { useUserStore } from "../../store/store";
 
 export default function LoginModal({ isOpen, onClose }) {
   const location = useLocation();
   const [formData, setFormData] = useState({});
   const searchParams = new URLSearchParams(location.search);
-  const { setToken, token } = useUserStore();
   const oauthId = searchParams.get("oauthId");
   const loginType = searchParams.get("loginType");
   const [loginMessage, setLoginMessage] = useState();
@@ -21,7 +19,6 @@ export default function LoginModal({ isOpen, onClose }) {
   const checkLogin = async () => {
     const userData = { ...formData };
     const result = await Auth.Login(userData);
-    console.log(result);
     if (result.status === 201) {
       window.localStorage.setItem("oauthId", result.data.accessToken);
       window.dispatchEvent(new Event("token"));

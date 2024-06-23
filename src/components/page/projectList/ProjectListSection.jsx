@@ -14,7 +14,6 @@ export default function ProjectListSection() {
     const result = await Project.ProjectList(page, 12);
     setData(result.data.nodes);
     setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
-    console.log(Math.ceil(result.data.count / 12));
   };
 
   useEffect(() => {

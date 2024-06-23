@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { User } from "../../../utils/repository";
 import BasicUserProfile from "../../basic/user/UserProfile";
@@ -13,7 +12,6 @@ export default function UserListSection() {
   const fetch = async (page = 1) => {
     const result = await User.GetUser(page, 12);
     setData(result.data.nodes);
-    console.log(data);
     setTotalPages(Math.ceil(result.data.count / 12)); // 올림하여 총 페이지 수 계산
   };
 

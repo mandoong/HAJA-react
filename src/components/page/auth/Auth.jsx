@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Auth, User } from "../../../utils/repository";
+import { User } from "../../../utils/repository";
 import { useUserStore } from "../../../store/store";
 
 export default function AuthPage() {
@@ -11,7 +11,7 @@ export default function AuthPage() {
   const loginType = searchParams.get("loginType");
   const accessToken = searchParams.get("accessToken");
 
-  const { setToken, token } = useUserStore();
+  const { token } = useUserStore();
 
   // 테스트용 async 함수
   const fetch = async () => {
